@@ -1,0 +1,5 @@
+# Замените elena-pmu.ru на реальный домен после публикации сайта
+User-agent: *
+Allow: /
+
+Sitemap: https://elena-pmu.ru/sitemap.xml
