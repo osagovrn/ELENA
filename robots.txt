@@ -1,5 +1,5 @@
-# Замените elena-pmu.ru на реальный домен после публикации сайта
+# Домен: GitHub Pages (osagovrn/LENA)
 User-agent: *
 Allow: /
 
-Sitemap: https://elena-pmu.ru/sitemap.xml
+Sitemap: https://osagovrn.github.io/LENA/sitemap.xml

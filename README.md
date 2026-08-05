@@ -2,7 +2,7 @@
 
 Одностраничный сайт мастера перманентного макияжа. Чистый HTML / CSS / JS.
 
-**Домен-плейсхолдер в коде:** `elena-pmu.ru` — замените после публикации.
+**Домен:** `https://osagovrn.github.io/LENA/` (GitHub Pages).
 
 ## Структура
 
@@ -29,7 +29,7 @@ python3 -m http.server 8080
 
 1. Загрузите содержимое этой папки в корень репозитория.
 2. Settings → Pages → Deploy from branch → `main` / root.
-3. Замените `elena-pmu.ru` в `index.html`, `robots.txt`, `sitemap.xml`.
+3. Если домен репозитория/пользователя изменится — обновите ссылки в `index.html`, `robots.txt`, `sitemap.xml`.
 
 ## Баннер отпуска
 
