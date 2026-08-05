@@ -2,7 +2,7 @@
 
 Одностраничный сайт мастера перманентного макияжа. Чистый HTML / CSS / JS.
 
-**Домен:** `https://osagovrn.github.io/LENA/` (GitHub Pages).
+**Домен:** `https://yvwvy.ru/ELENA/` (проксируется через GitHub Pages).
 
 ## Структура
 

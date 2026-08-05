@@ -58,6 +58,23 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* ---------- КОНТЕЙНЕР ---------- */
 .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
 
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 16px;
+    z-index: 999;
+    padding: 12px 24px;
+    background: var(--accent-a11y);
+    color: var(--white);
+    border-radius: 0 0 8px 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: top 0.2s;
+}
+.skip-link:focus {
+    top: 0;
+}
+
 /* ---------- ТИПОГРАФИКА ---------- */
 .section-title {
     font-family: var(--serif);
@@ -422,7 +439,7 @@ body.menu-open { overflow: hidden; }
     font-family: var(--serif);
     font-size: 3rem;
     font-weight: 600;
-    color: var(--accent);
+    color: var(--accent-a11y);
 }
 .badge-text {
     font-size: 0.78rem;
@@ -449,7 +466,7 @@ body.menu-open { overflow: hidden; }
     font-family: var(--serif);
     font-size: 2.6rem;
     font-weight: 600;
-    color: var(--accent);
+    color: var(--accent-a11y);
     line-height: 1;
     display: inline-block;
 }
@@ -511,7 +528,7 @@ body.menu-open { overflow: hidden; }
     margin-bottom: 20px;
     margin-top: auto;
 }
-.service-from strong { font-family: var(--serif); font-size: 1.5rem; color: var(--accent); font-weight: 600; }
+.service-from strong { font-family: var(--serif); font-size: 1.5rem; color: var(--accent-a11y); font-weight: 600; }
 
 
 /* ================================================
@@ -574,7 +591,7 @@ body.menu-open { overflow: hidden; }
     font-family: var(--serif);
     font-size: 3rem;
     font-weight: 600;
-    color: var(--accent);
+    color: var(--accent-a11y);
     opacity: 0.5;
     line-height: 1;
 }
@@ -634,7 +651,7 @@ body.menu-open { overflow: hidden; }
 }
 .price-head { text-align: center; margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
 .price-head h3 { font-family: var(--serif); font-size: 2rem; font-weight: 600; }
-.price-head p { color: var(--accent); font-weight: 500; margin-top: 6px; }
+.price-head p { color: var(--accent-a11y); font-weight: 500; margin-top: 6px; }
 
 .price-list {
     flex: 1;
@@ -648,7 +665,7 @@ body.menu-open { overflow: hidden; }
     gap: 12px;
 }
 .price-list li span { font-size: 0.92rem; }
-.price-list li strong { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; color: var(--accent); white-space: nowrap; }
+.price-list li strong { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; color: var(--accent-a11y); white-space: nowrap; }
 .price-note { opacity: 0.75; }
 .price-card .btn { margin-top: auto; padding-top: 28px; }
 
@@ -675,7 +692,7 @@ body.menu-open { overflow: hidden; }
     box-shadow: var(--shadow-sm);
     transition: all 0.5s var(--ease);
 }
-.stars { color: #E8A33C; font-size: 1.1rem; letter-spacing: 3px; margin-bottom: 18px; }
+.stars { color: #C47F1A; font-size: 1.1rem; letter-spacing: 3px; margin-bottom: 18px; }
 .review-card p {
     font-size: 1rem;
     color: var(--text-muted);
@@ -685,7 +702,7 @@ body.menu-open { overflow: hidden; }
 }
 .review-author { display: flex; flex-direction: column; }
 .review-author strong { font-family: var(--serif); font-size: 1.2rem; }
-.review-author span { font-size: 0.82rem; color: var(--accent); }
+.review-author span { font-size: 0.82rem; color: var(--accent-a11y); }
 
 .reviews-nav {
     display: flex;
@@ -755,7 +772,7 @@ body.menu-open { overflow: hidden; }
 .faq-question:hover { color: var(--accent); }
 .faq-icon {
     font-size: 1.6rem;
-    color: var(--accent);
+    color: var(--accent-a11y);
     transition: transform 0.3s var(--ease);
     flex-shrink: 0;
     line-height: 1;
@@ -1232,7 +1249,7 @@ a.contact-card:hover {
         max-width: 100%;
     }
     .about-image { margin-bottom: 0; }
-    .portfolio-grid { grid-template-columns: 1fr; gap: 12px; }
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
     .section { padding: 48px 0; }
     .btn { padding: 14px 28px; }
     .price-list li strong { font-size: 1.05rem; }

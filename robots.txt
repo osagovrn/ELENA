@@ -1,5 +1,5 @@
-# Домен: GitHub Pages (osagovrn/LENA)
+# Домен: yvwvy.ru/ELENA
 User-agent: *
 Allow: /
 
-Sitemap: https://osagovrn.github.io/LENA/sitemap.xml
+Sitemap: https://yvwvy.ru/ELENA/sitemap.xml
