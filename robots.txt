@@ -1,5 +1,5 @@
-# Домен: yvwvy.ru/ELENA
+# Домен: elenaperm.ru
 User-agent: *
 Allow: /
 
-Sitemap: https://yvwvy.ru/ELENA/sitemap.xml
+Sitemap: https://elenaperm.ru/sitemap.xml
