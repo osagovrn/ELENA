@@ -1,4 +1,17 @@
 /* ================================================
+   ДЛЯ МАСТЕРА И ИИ — КРАТКАЯ КАРТА ФАЙЛА
+   -----------------------------------------------
+   Менять без риска:
+   • ANNOUNCEMENT_CONFIG ниже — баннер отпуска (enabled/title/text/icon)
+   Не ломать без нужды:
+   • бургер-меню, FAQ-аккордеон, слайдер отзывов, smooth-scroll
+   Связанные файлы:
+   • js/i18n.js + js/i18n-extra.js — языки
+   • css/style.css — внешний вид
+   • index.html — тексты (часть через data-i18n)
+   ================================================ */
+
+/* ================================================
    ЕЛЕНА — ПЕРМАНЕНТНЫЙ МАКИЯЖ
    Интерактивность сайта
    ================================================ */
@@ -45,24 +58,37 @@ document.addEventListener('DOMContentLoaded', () => {
        ============================================ */
     const burger = document.getElementById('burger');
     const navMenu = document.getElementById('navMenu');
+    const navOverlay = document.getElementById('navOverlay');
     const navLinks = document.querySelectorAll('.nav-link');
 
     const toggleMenu = (forceClose = false) => {
-        if (forceClose) {
+        const willOpen = forceClose ? false : !navMenu.classList.contains('active');
+        if (forceClose || !willOpen) {
             burger.classList.remove('active');
             navMenu.classList.remove('active');
             document.body.classList.remove('menu-open');
+            if (navOverlay) {
+                navOverlay.classList.remove('active');
+                navOverlay.setAttribute('aria-hidden', 'true');
+            }
             return;
         }
-        burger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-        document.body.classList.toggle('menu-open');
+        burger.classList.add('active');
+        navMenu.classList.add('active');
+        document.body.classList.add('menu-open');
+        if (navOverlay) {
+            navOverlay.classList.add('active');
+            navOverlay.setAttribute('aria-hidden', 'false');
+        }
     };
     burger.addEventListener('click', (e) => {
         e.stopPropagation();
         toggleMenu();
     });
     navLinks.forEach(link => link.addEventListener('click', () => toggleMenu(true)));
+    if (navOverlay) {
+        navOverlay.addEventListener('click', () => toggleMenu(true));
+    }
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && navMenu.classList.contains('active')) toggleMenu(true);
     });

@@ -1,6 +1,13 @@
 /* ================================================
    ЕЛЕНА — ПЕРМАНЕНТНЫЙ МАКИЯЖ
    Премиальный стиль «Тихая роскошь»
+   -----------------------------------------------
+   ДЛЯ МАСТЕРА И ИИ:
+   • Цвета: блок :root ( --accent, --bg, --text … )
+   • Адаптив: конец файла (@media 1100 / 992 / 768 / 480 / 380)
+   • Языки: .lang-dropdown
+   • Реклама проектов: .projects / .project-card
+   • Не удалять safe-area и hover:none — мобилки и iPhone
    ================================================ */
 
 /* ---------- ПЕРЕМЕННЫЕ ---------- */
@@ -31,7 +38,10 @@
 /* ---------- СБРОС ---------- */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
 
 body {
     font-family: var(--sans);
@@ -41,6 +51,8 @@ body {
     line-height: 1.7;
     overflow-x: hidden;
     font-size: 17px;
+    padding-left: env(safe-area-inset-left, 0);
+    padding-right: env(safe-area-inset-right, 0);
 }
 
 img { max-width: 100%; display: block; }
@@ -156,12 +168,31 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    ================================================ */
 .floating-buttons {
     position: fixed;
-    right: 24px;
-    bottom: 24px;
+    right: max(24px, env(safe-area-inset-right, 0px));
+    bottom: max(24px, env(safe-area-inset-bottom, 0px));
     z-index: 200;
     display: flex;
     flex-direction: column;
     gap: 12px;
+}
+
+/* Оверлей мобильного меню */
+.nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(61, 46, 42, 0.45);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s var(--ease), visibility 0.35s var(--ease);
+    pointer-events: none;
+}
+.nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
 }
 .float-btn {
     width: 56px; height: 56px;
@@ -191,17 +222,155 @@ body.menu-open { overflow: hidden; }
 .navbar {
     position: fixed;
     top: 0; left: 0; right: 0;
-    z-index: 100;
+    z-index: 101;
     padding: 20px 0;
+    padding-top: max(20px, env(safe-area-inset-top, 0px));
     transition: all 0.4s var(--ease);
 }
 .navbar.scrolled {
     background: rgba(250, 246, 242, 0.92);
     backdrop-filter: blur(16px);
     padding: 14px 0;
+    padding-top: max(14px, env(safe-area-inset-top, 0px));
     box-shadow: var(--shadow-sm);
 }
-.nav-container { display: flex; align-items: center; justify-content: space-between; }
+.nav-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+/* Меню справа, как в начале проекта */
+.nav-menu {
+    margin-left: auto;
+}
+
+/* Язык — справа от меню, компактно, не мешает пунктам */
+.lang-switcher,
+.lang-dropdown {
+    position: relative;
+    flex-shrink: 0;
+    margin-left: 4px;
+    margin-right: 0;
+    z-index: 120;
+}
+.lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 7px 10px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    line-height: 1;
+    transition: border-color 0.25s var(--ease), background 0.25s var(--ease);
+}
+.lang-toggle:hover {
+    border-color: var(--accent-light);
+}
+.navbar.scrolled .lang-toggle {
+    background: var(--white);
+}
+.lang-current {
+    min-width: 1.4em;
+    text-align: center;
+}
+.lang-chevron {
+    font-size: 0.65rem;
+    opacity: 0.65;
+    transition: transform 0.25s var(--ease);
+}
+.lang-dropdown.open .lang-chevron {
+    transform: rotate(180deg);
+}
+.lang-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 168px;
+    padding: 6px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.2s var(--ease), transform 0.2s var(--ease), visibility 0.2s;
+    z-index: 130;
+}
+.lang-dropdown.open .lang-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.lang-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s var(--ease);
+}
+.lang-option:hover {
+    background: var(--bg-alt);
+}
+.lang-option.active {
+    background: rgba(192, 133, 111, 0.14);
+    color: var(--accent-a11y);
+}
+.lang-option-code {
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    min-width: 2.2em;
+}
+.lang-option-name {
+    font-weight: 400;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+}
+.lang-option.active .lang-option-name {
+    color: var(--accent-a11y);
+}
+
+@media (max-width: 992px) {
+    .nav-container > .nav-menu {
+        margin-left: 0; /* выезжающая панель, не flex-элемент ряда */
+    }
+    .lang-switcher,
+    .lang-dropdown {
+        margin-left: auto; /* язык у правого края, рядом с бургером */
+        margin-right: 4px;
+        order: 2;
+    }
+    .lang-toggle {
+        padding: 6px 8px;
+        font-size: 0.72rem;
+    }
+    .lang-menu {
+        right: 0;
+        left: auto;
+        min-width: 160px;
+    }
+    .burger { order: 3; margin-left: 0; }
+    .logo { order: 1; }
+    .nav-menu { order: 4; }
+}
 
 .logo { display: flex; align-items: center; gap: 12px; }
 .logo-mark {
@@ -312,6 +481,12 @@ body.menu-open { overflow: hidden; }
     background: url('../images/hero-bg-new.jpg') center/cover no-repeat;
     color: var(--text);
     overflow: hidden;
+}
+/* WebP для hero-фона там, где браузер его поддерживает (экономия ~40% веса) */
+@supports (background-image: image-set(url('../images/hero-bg-new.webp') type('image/webp'))) {
+    .hero {
+        background-image: image-set(url('../images/hero-bg-new.webp') type('image/webp'), url('../images/hero-bg-new.jpg') type('image/jpeg'));
+    }
 }
 .hero-overlay {
     position: absolute;
@@ -519,6 +694,9 @@ body.menu-open { overflow: hidden; }
     gap: 16px;
     padding: 12px 0;
     border-bottom: 1px dashed var(--border);
+    font-size: 0.92rem;
+    line-height: 1.45;
+    color: var(--text);
 }
 .service-list li span:first-child { font-weight: 500; font-size: 0.95rem; }
 .service-list li span:last-child { font-size: 0.82rem; color: var(--text-muted); text-align: right; }
@@ -992,6 +1170,106 @@ a.contact-card:hover {
 }
 
 
+
+/* ================================================
+   ЕЩЁ В ВОРОНЕЖЕ — проекты
+   ================================================ */
+.projects {
+    background: var(--bg-alt);
+}
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+.project-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 28px 24px 24px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
+    color: inherit;
+    text-decoration: none;
+    min-height: 100%;
+}
+.project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent-light);
+}
+.project-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 0.68rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent-a11y);
+    background: rgba(192, 133, 111, 0.12);
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-weight: 500;
+}
+.project-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--bg-alt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.45rem;
+    margin-bottom: 4px;
+}
+.project-title {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+    padding-right: 72px;
+}
+.project-desc {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    flex-grow: 1;
+}
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--accent-a11y);
+    letter-spacing: 0.3px;
+}
+.project-card:hover .project-link {
+    color: var(--accent-dark);
+}
+
+@media (max-width: 992px) {
+    .projects-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+}
+@media (max-width: 768px) {
+    .projects-grid { grid-template-columns: 1fr; max-width: none; }
+    .project-card { padding: 24px 20px 20px; }
+    .project-title { font-size: 1.22rem; padding-right: 88px; }
+    .project-badge { top: 14px; right: 14px; font-size: 0.64rem; }
+    .project-desc { font-size: 0.9rem; }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    .projects-grid { grid-template-columns: repeat(2, 1fr); max-width: none; }
+    .projects-grid .project-card:last-child { grid-column: 1 / -1; max-width: 480px; margin: 0 auto; }
+}
+
 /* ================================================
    FOOTER
    ================================================ */
@@ -1124,6 +1402,16 @@ a.contact-card:hover {
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
 /* ================================================
+   АДАПТИВ — ОЧЕНЬ ШИРОКИЙ ЭКРАН
+   ================================================ */
+@media (min-width: 1600px) {
+    .hero-content {
+        transform: translateX(clamp(-140px, -8vw, -80px));
+        max-width: 760px;
+    }
+}
+
+/* ================================================
    АДАПТИВ — УЗКИЙ ДЕСКТОП / ШИРОКИЙ ПЛАНШЕТ
    ================================================ */
 @media (max-width: 1100px) {
@@ -1133,7 +1421,7 @@ a.contact-card:hover {
 }
 
 /* ================================================
-   АДАПТИВ — ПЛАНШЕТ
+   АДАПТИВ — ПЛАНШЕТ (+ бургер-меню)
    ================================================ */
 @media (max-width: 992px) {
     .about-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -1157,23 +1445,8 @@ a.contact-card:hover {
         gap: 4px;
     }
     .service-list li span:last-child { text-align: left; }
-}
 
-/* ================================================
-   АДАПТИВ — ТЕЛЕФОН
-   ================================================ */
-@media (max-width: 768px) {
-    body { font-size: 16px; }
-    .container { padding: 0 20px; }
-    .booking-map-card { height: 260px; min-height: 260px; flex: none; margin-top: 0; }
-    .booking-map-badge { left: 8px; right: auto; bottom: 8px; max-width: calc(100% - 16px); padding: 10px 14px; }
-    .booking-map-badge strong { white-space: normal; }
-    .btn-map { flex: 1 1 40%; min-width: 0; padding: 12px 10px; font-size: 0.72rem; }
-    .booking-map-actions { gap: 8px; }
-    .contact-cards { grid-template-columns: 1fr; gap: 10px; }
-    .contact-card--wide { grid-column: auto; }
-    .contact-card { padding: 14px 16px; }
-
+    /* Бургер уже на планшетах — меню не сжимается в ряд */
     .nav-menu {
         position: fixed;
         top: 0; right: -100%;
@@ -1186,24 +1459,66 @@ a.contact-card:hover {
         justify-content: center;
         gap: 24px;
         padding: 40px 32px;
+        padding-top: max(40px, env(safe-area-inset-top, 0px));
+        padding-bottom: max(40px, env(safe-area-inset-bottom, 0px));
         box-shadow: -10px 0 40px rgba(0,0,0,0.15);
         transition: right 0.4s var(--ease);
-        z-index: 100;
+        z-index: 102;
     }
     .nav-menu.active { right: 0; }
     .nav-link { color: var(--text) !important; font-size: 1.1rem; }
     .navbar.scrolled .nav-link { color: var(--text) !important; }
-    .burger { display: flex; }
+    .burger { display: flex; z-index: 103; }
+}
 
-    .hero-content { padding-top: 96px; padding-bottom: 40px; transform: none; }
-    .hero-title { margin-bottom: 20px; }
-    .hero-subtitle { margin-bottom: 32px; font-size: 1.05rem; }
-    .hero-cta { width: 100%; align-items: center; }
+/* ================================================
+   АДАПТИВ — ТЕЛЕФОН
+   ================================================ */
+@media (max-width: 768px) {
+    body { font-size: 16px; }
+    .container {
+        padding-left: max(20px, env(safe-area-inset-left, 0px));
+        padding-right: max(20px, env(safe-area-inset-right, 0px));
+    }
+    .booking-map-card { height: 260px; min-height: 260px; flex: none; margin-top: 0; }
+    .booking-map-badge { left: 8px; right: auto; bottom: 8px; max-width: calc(100% - 16px); padding: 10px 14px; }
+    .booking-map-badge strong { white-space: normal; }
+    .btn-map { flex: 1 1 40%; min-width: 0; padding: 12px 10px; font-size: 0.72rem; }
+    .booking-map-actions { gap: 8px; }
+    .contact-cards { grid-template-columns: 1fr; gap: 10px; }
+    .contact-card--wide { grid-column: auto; }
+    .contact-card { padding: 14px 16px; min-height: 52px; }
+
+    /* Hero: лицо справа на фото → фокус 82% 28% */
+    .hero {
+        background-position: 82% 28%;
+        min-height: 100svh;
+        min-height: 100dvh;
+    }
+    .hero-overlay {
+        background: linear-gradient(
+            180deg,
+            rgba(250, 246, 242, 0.97) 0%,
+            rgba(250, 246, 242, 0.88) 35%,
+            rgba(250, 246, 242, 0.55) 62%,
+            rgba(250, 246, 242, 0.22) 100%
+        );
+    }
+    .hero-content {
+        padding-top: max(96px, calc(72px + env(safe-area-inset-top, 0px)));
+        padding-bottom: 40px;
+        transform: none;
+        text-align: left;
+    }
+    .hero-tagline { letter-spacing: 3px; font-size: 0.72rem; }
+    .hero-title { margin-bottom: 20px; font-size: clamp(2.1rem, 9vw, 3.2rem); }
+    .hero-subtitle { margin-bottom: 32px; font-size: 1.02rem; max-width: 100%; }
+    .hero-cta { width: 100%; align-items: stretch; }
     .hero-buttons { flex-direction: column; align-items: stretch; width: 100%; gap: 14px; }
-    .hero-buttons .btn { width: 100%; order: 1; }
+    .hero-buttons .btn { width: 100%; order: 1; min-height: 48px; }
     .hero-buttons .btn-primary { order: 1; }
     .hero-buttons .btn-ghost { margin-left: 0; order: 2; }
-    .hero-scroll { order: 3; margin-top: 20px; align-self: center; }
+    .hero-scroll { order: 3; margin-top: 16px; align-self: center; }
 
     .services-grid { grid-template-columns: 1fr; gap: 20px; }
     .service-img { height: 220px; }
@@ -1218,28 +1533,45 @@ a.contact-card:hover {
 
     .process-timeline { grid-template-columns: 1fr; gap: 14px; }
 
-    .faq-question { padding: 18px 20px; font-size: 1rem; }
+    .faq-question { padding: 18px 20px; font-size: 1rem; min-height: 52px; }
     .faq-answer p { padding: 0 20px 18px; }
 
-    .footer { padding-top: 56px; }
+    .footer {
+        padding-top: 56px;
+        padding-bottom: max(24px, env(safe-area-inset-bottom, 0px));
+    }
     .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 28px; }
     .footer-brand p { margin-left: auto; margin-right: auto; }
     .footer-social { justify-content: center; }
     .footer-bottom .container { flex-direction: column; text-align: center; gap: 12px; }
 
-    .section { padding: 56px 0; }
+    .section {
+        padding: 56px 0;
+        padding-bottom: max(56px, calc(56px + env(safe-area-inset-bottom, 0px) * 0.3));
+    }
     .section-head { margin-bottom: 36px; }
     .about-stats { gap: 20px 24px; }
     .stat-num { font-size: 2.2rem; }
     .stat-num.stat-text { font-size: 1.25rem; }
     .about-image img { height: 360px; max-height: 360px; }
-    .floating-buttons { right: 14px; bottom: 14px; gap: 10px; }
+
+    .floating-buttons {
+        right: max(14px, env(safe-area-inset-right, 0px));
+        bottom: max(14px, calc(14px + env(safe-area-inset-bottom, 0px)));
+        gap: 10px;
+    }
     .float-btn { width: 48px; height: 48px; }
     .announcement-modal { padding: 36px 24px 28px; }
+
+    /* Отступ снизу, чтобы контент не упирался в плавающие кнопки */
+    .booking { padding-bottom: max(72px, calc(56px + env(safe-area-inset-bottom, 0px) + 56px)); }
 }
 
 @media (max-width: 480px) {
-    .container { padding: 0 16px; }
+    .container {
+        padding-left: max(16px, env(safe-area-inset-left, 0px));
+        padding-right: max(16px, env(safe-area-inset-right, 0px));
+    }
     .about-badge {
         position: relative;
         bottom: 0;
@@ -1249,10 +1581,82 @@ a.contact-card:hover {
         max-width: 100%;
     }
     .about-image { margin-bottom: 0; }
-    .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .portfolio-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
     .section { padding: 48px 0; }
-    .btn { padding: 14px 28px; }
+    .btn { padding: 14px 28px; min-height: 48px; }
     .price-list li strong { font-size: 1.05rem; }
+    .hero-title { font-size: clamp(1.95rem, 8.5vw, 2.6rem); }
+    .hero-tagline { letter-spacing: 2.5px; }
+}
+
+/* Очень узкие экраны — портфолио крупнее */
+@media (max-width: 380px) {
+    .portfolio-grid { grid-template-columns: 1fr; gap: 12px; }
+    .hero {
+        background-position: 88% 22%;
+    }
+}
+
+/* ================================================
+   АДАПТИВ — НИЗКИЙ ЭКРАН / LANDSCAPE НА ТЕЛЕФОНЕ
+   ================================================ */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 72px 0 32px;
+    }
+    .hero-content {
+        padding-top: 24px;
+        padding-bottom: 24px;
+    }
+    .hero-title {
+        font-size: clamp(1.6rem, 5vw, 2.2rem);
+        margin-bottom: 12px;
+    }
+    .hero-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 16px;
+        line-height: 1.5;
+    }
+    .hero-tagline { margin-bottom: 10px; }
+    .hero-buttons { gap: 10px; }
+    .hero-buttons .btn { min-height: 42px; padding: 10px 20px; }
+    .hero-scroll { display: none; }
+    .floating-buttons {
+        right: max(10px, env(safe-area-inset-right, 0px));
+        bottom: max(10px, env(safe-area-inset-bottom, 0px));
+        gap: 8px;
+    }
+    .float-btn { width: 42px; height: 42px; }
+    .section { padding: 40px 0; }
+}
+
+/* ================================================
+   HOVER ТОЛЬКО НА УСТРОЙСТВАХ С НАСТОЯЩИМ HOVER
+   (убирает «залипание» после тапа на тач-экранах)
+   ================================================ */
+@media (hover: none) {
+    .btn-primary:hover,
+    .btn-ghost:hover,
+    .btn-outline:hover,
+    .float-btn:hover,
+    .service-card:hover,
+    .price-card:hover,
+    .price-featured:hover,
+    .process-step:hover,
+    .portfolio-item:hover img,
+    .contact-card:hover,
+    .footer-social a:hover,
+    .nav-cta:hover,
+    .review-btn:hover {
+        transform: none;
+    }
+    .service-card:hover .service-img img {
+        transform: none;
+    }
+    .logo:hover .logo-mark {
+        transform: none;
+    }
 }
 
 /* ---------- Уважение к настройкам анимаций ---------- */

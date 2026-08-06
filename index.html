@@ -2,33 +2,47 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#3D2E2A">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Елена — перманентный макияж, Воронеж">
-    <meta name="description" content="Елена — мастер перманентного макияжа в Воронеже. Брови и губы: натуральный результат, премиальные материалы, индивидуальный подбор формы и цвета.">
-    <meta name="keywords" content="перманентный макияж Воронеж, татуаж бровей Воронеж, татуаж губ Воронеж, микроблейдинг Воронеж, пудровые брови, перманентный макияж губ">
+    <meta name="description" content="Перманентный макияж бровей и губ в Воронеже — пудровые брови, микроблейдинг, акварельные губы. Натуральный результат, гипоаллергенные пигменты. Запись на бесплатную консультацию.">
+    <meta name="keywords" content="перманентный макияж Воронеж, татуаж бровей Воронеж, пудровые брови Воронеж, микроблейдинг Воронеж, татуаж губ Воронеж, перманентный макияж губ, акварельные губы, волосковая техника бровей, перманент бровей цена, коррекция перманентного макияжа Воронеж">
     <meta name="yandex-verification" content="7212f6251177285f" />
-    <title>Елена — Перманентный макияж | Воронеж</title>
+    <title>Перманентный макияж Воронеж — брови и губы | Елена</title>
 
     <!-- Домен: elenaperm.ru -->
     <link rel="canonical" href="https://elenaperm.ru/">
+    <!-- hreflang SEO: все языки сайта -->
+    <link rel="alternate" hreflang="ru" href="https://elenaperm.ru/">
+    <link rel="alternate" hreflang="en" href="https://elenaperm.ru/?lang=en">
+    <link rel="alternate" hreflang="zh-Hans" href="https://elenaperm.ru/?lang=zh">
+    <link rel="alternate" hreflang="uz" href="https://elenaperm.ru/?lang=uz">
+    <link rel="alternate" hreflang="ka" href="https://elenaperm.ru/?lang=ka">
+    <link rel="alternate" hreflang="os" href="https://elenaperm.ru/?lang=os">
+    <link rel="alternate" hreflang="ky" href="https://elenaperm.ru/?lang=ky">
+    <link rel="alternate" hreflang="x-default" href="https://elenaperm.ru/">
 
-    <!-- Open Graph / соцсети (WhatsApp, Telegram, VK превью ссылки) -->
+
+    <!-- Open Graph / превью ссылок (Telegram, VK и др.) -->
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ru_RU">
-    <meta property="og:title" content="Елена — Перманентный макияж | Воронеж">
-    <meta property="og:description" content="Перманентный макияж бровей и губ в Воронеже. Натуральный результат, гипоаллергенные материалы, индивидуальный подбор формы и цвета.">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="zh_CN">
+    <meta property="og:locale:alternate" content="uz_UZ">
+    <meta property="og:locale:alternate" content="ka_GE">
+    <meta property="og:locale:alternate" content="os_RU">
+    <meta property="og:locale:alternate" content="ky_KG">
+
+    <meta property="og:title" content="Перманентный макияж Воронеж — брови и губы | Елена">
+    <meta property="og:description" content="Пудровые брови, микроблейдинг, акварельные губы в Воронеже. Натуральный результат без эффекта «татуажа», гипоаллергенные пигменты. Бесплатная консультация.">
     <meta property="og:image" content="https://elenaperm.ru/images/hero-bg-new.jpg">
     <meta property="og:image:width" content="1400">
     <meta property="og:image:height" content="642">
-    <meta property="og:image:alt" content="Елена — перманентный макияж бровей и губ в Воронеже">
+    <meta property="og:image:alt" content="Перманентный макияж бровей и губ в Воронеже — мастер Елена">
     <meta property="og:url" content="https://elenaperm.ru/">
     <meta property="og:site_name" content="Елена — Перманентный макияж">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Елена — Перманентный макияж | Воронеж">
-    <meta name="twitter:description" content="Перманентный макияж бровей и губ в Воронеже. Натуральный результат, индивидуальный подбор формы и цвета.">
-    <meta name="twitter:image" content="https://elenaperm.ru/images/hero-bg-new.jpg">
+    <!-- twitter: meta-теги убраны (X/Twitter ограничен в РФ) -->
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -41,7 +55,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="preload" as="image" href="images/hero-bg-new.jpg" fetchpriority="high">
+    <!-- Предзагрузка hero-фона: WebP для современных браузеров (~40% легче), JPG сам подтянется как фон в CSS для старых -->
+    <link rel="preload" as="image" href="images/hero-bg-new.webp" type="image/webp" fetchpriority="high">
     <link rel="stylesheet" href="css/style.css">
 
     <!-- Структурированные данные для поиска/карт -->
@@ -51,7 +66,7 @@
         "@type": "BeautySalon",
         "@id": "https://elenaperm.ru/#business",
         "name": "Елена — Перманентный макияж",
-        "description": "Мастер перманентного макияжа бровей и губ в Воронеже. Натуральный результат, гипоаллергенные премиальные пигменты, индивидуальный подбор формы и цвета.",
+        "description": "Перманентный макияж бровей и губ в Воронеже: пудровые брови, микроблейдинг, волосковая техника, акварельные губы и эффект помады. Натуральный результат, гипоаллергенные пигменты, индивидуальный подбор формы и цвета.",
         "image": "https://elenaperm.ru/images/hero-bg-new.jpg",
         "url": "https://elenaperm.ru/",
         "telephone": "+79515410879",
@@ -91,13 +106,13 @@
             "itemListElement": [
                 {
                     "@type": "Offer",
-                    "itemOffered": { "@type": "Service", "name": "Перманентный макияж бровей" },
+                    "itemOffered": { "@type": "Service", "name": "Перманентный макияж бровей (пудровая, теневая, волосковая техника, микроблейдинг)" },
                     "priceCurrency": "RUB",
                     "price": "3000"
                 },
                 {
                     "@type": "Offer",
-                    "itemOffered": { "@type": "Service", "name": "Перманентный макияж губ" },
+                    "itemOffered": { "@type": "Service", "name": "Перманентный макияж губ (контур, растушёвка, акварель, эффект помады)" },
                     "priceCurrency": "RUB",
                     "price": "3500"
                 }
@@ -107,7 +122,10 @@
     </script>
 </head>
 <body>
-    <a href="#hero" class="skip-link">Перейти к содержимому</a>
+    <a href="#hero" class="skip-link" data-i18n="skip">Перейти к содержимому</a>
+
+    <!-- Оверлей мобильного меню -->
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
     <!-- ============ ПЛАВАЮЩИЕ КНОПКИ ============ -->
     <div class="floating-buttons">
@@ -127,19 +145,20 @@
         <div class="container nav-container">
             <a href="#hero" class="logo">
                 <span class="logo-mark">Е</span>
-                <span class="logo-text">Елена<small>перманентный макияж</small></span>
+                <span class="logo-text">Елена<small data-i18n="logo.sub">перманентный макияж</small></span>
             </a>
             <nav class="nav-menu" id="navMenu">
-                <a href="#about" class="nav-link">Обо мне</a>
-                <a href="#services" class="nav-link">Услуги</a>
-                <a href="#portfolio" class="nav-link">Портфолио</a>
-                <a href="#process" class="nav-link nav-link-gradient">Процесс</a>
-                <a href="#pricing" class="nav-link nav-link-gradient">Цены</a>
-                <a href="#reviews" class="nav-link nav-link-gradient">Отзывы</a>
-                <a href="#faq" class="nav-link nav-link-gradient">Вопросы</a>
-                <a href="#booking" class="nav-link nav-cta">Записаться</a>
+                <a href="#about" class="nav-link" data-i18n="nav.about">Обо мне</a>
+                <a href="#services" class="nav-link" data-i18n="nav.services">Услуги</a>
+                <a href="#portfolio" class="nav-link" data-i18n="nav.portfolio">Портфолио</a>
+                <a href="#process" class="nav-link nav-link-gradient" data-i18n="nav.process">Процесс</a>
+                <a href="#pricing" class="nav-link nav-link-gradient" data-i18n="nav.pricing">Цены</a>
+                <a href="#reviews" class="nav-link nav-link-gradient" data-i18n="nav.reviews">Отзывы</a>
+                <a href="#faq" class="nav-link nav-link-gradient" data-i18n="nav.faq">Вопросы</a>
+                <a href="#booking" class="nav-link nav-cta" data-i18n="nav.book">Записаться</a>
             </nav>
-            <button type="button" class="burger" id="burger" aria-label="Меню">
+            <div class="lang-switcher" id="langSwitcher" aria-label="Language"></div>
+            <button type="button" class="burger" id="burger" data-i18n-aria="nav.menu" aria-label="Меню">
                 <span></span><span></span><span></span>
             </button>
         </div>
@@ -149,16 +168,16 @@
     <section class="hero" id="hero">
         <div class="hero-overlay"></div>
         <div class="container hero-content">
-            <p class="hero-tagline reveal">✦ Воронеж</p>
-            <h1 class="hero-title reveal">Естественная красота,<br><em>которая остаётся с вами</em></h1>
-            <p class="hero-subtitle reveal">Перманентный макияж бровей и губ. Индивидуальный подбор формы и оттенка, премиальные материалы и натуральный результат без эффекта «татуажа».</p>
+            <p class="hero-tagline reveal" data-i18n="hero.tag">✦ Воронеж</p>
+            <h1 class="hero-title reveal" data-i18n="hero.title" data-i18n-mode="html">Естественная красота,<br><em>которая остаётся с вами</em></h1>
+            <p class="hero-subtitle reveal" data-i18n="hero.sub">Перманентный макияж бровей и губ. Индивидуальный подбор формы и оттенка, премиальные материалы и натуральный результат без эффекта «татуажа».</p>
             <div class="hero-cta reveal">
                 <div class="hero-buttons">
-                    <a href="#booking" class="btn btn-primary">Записаться на процедуру</a>
+                    <a href="#booking" class="btn btn-primary" data-i18n="hero.cta">Записаться на процедуру</a>
                     <a href="#about" class="hero-scroll" aria-label="Прокрутить вниз">
                         <span></span>
                     </a>
-                    <a href="#portfolio" class="btn btn-ghost">Смотреть работы</a>
+                    <a href="#portfolio" class="btn btn-ghost" data-i18n="hero.works">Смотреть работы</a>
                 </div>
             </div>
         </div>
@@ -168,30 +187,30 @@
     <section class="section about" id="about">
         <div class="container about-grid">
             <div class="about-image reveal">
-                <img src="images/about-elena.jpg" width="800" height="1067" alt="Мастер перманентного макияжа Елена" loading="lazy">
+                <picture><source srcset="images/about-elena.webp" type="image/webp"><img src="images/about-elena.jpg" width="800" height="1067" data-i18n-alt="alt.about" alt="Елена — мастер перманентного макияжа бровей и губ в Воронеже" loading="lazy"></picture>
                 <div class="about-badge">
-                    <span class="badge-num">Сертифицированные</span>
-                    <span class="badge-text">гипоаллергенные пигменты</span>
+                    <span class="badge-num" data-i18n="about.badge1">Сертифицированные</span>
+                    <span class="badge-text" data-i18n="about.badge2">гипоаллергенные пигменты</span>
                 </div>
             </div>
             <div class="about-text reveal">
-                <p class="eyebrow">обо мне</p>
-                <h2 class="section-title">Здравствуйте, я Елена</h2>
-                    <p>Мастер перманентного макияжа из Воронежа. Я начинающий мастер, помогаю женщинам просыпаться красивыми — без ежедневной рутины с косметикой.</p>
-                <p>Моя философия проста: <strong>лучшая работа — та, которую не видно</strong>. Я не делаю ярких «татуировок на лице». Я создаю деликатное подчёркивание ваших природных черт — так, чтобы окружающие просто замечали, что вы выглядите отдохнувшей и свежей.</p>
-                <p>Я использую только сертифицированные гипоаллергенные пигменты, одноразовые материалы и современное оборудование. Безопасность и комфорт каждой клиентки — мой абсолютный приоритет.</p>
+                <p class="eyebrow" data-i18n="about.eyebrow">обо мне</p>
+                <h2 class="section-title" data-i18n="about.title">Здравствуйте, я Елена</h2>
+                    <p data-i18n="about.p1">Мастер перманентного макияжа из Воронежа. Я начинающий мастер, помогаю женщинам просыпаться красивыми — без ежедневной рутины с косметикой.</p>
+                <p data-i18n="about.p2" data-i18n-mode="html">Моя философия проста: <strong>лучшая работа — та, которую не видно</strong>. Я не делаю ярких «татуировок на лице». Я создаю деликатное подчёркивание ваших природных черт — так, чтобы окружающие просто замечали, что вы выглядите отдохнувшей и свежей.</p>
+                <p data-i18n="about.p3">Я использую только сертифицированные гипоаллергенные пигменты, одноразовые материалы и современное оборудование. Безопасность и комфорт каждой клиентки — мой абсолютный приоритет.</p>
                 <div class="about-stats">
                     <div class="stat">
-                        <span class="stat-num stat-text">Индивидуальный</span>
-                        <span class="stat-label">подход к каждому</span>
+                        <span class="stat-num stat-text" data-i18n="about.s1a">Индивидуальный</span>
+                        <span class="stat-label" data-i18n="about.s1b">подход к каждому</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-num stat-text">Сертифицированные</span>
-                        <span class="stat-label">материалы</span>
+                        <span class="stat-num stat-text" data-i18n="about.s2a">Сертифицированные</span>
+                        <span class="stat-label" data-i18n="about.s2b">материалы</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-num stat-text">Довольные</span>
-                        <span class="stat-label">клиенты</span>
+                        <span class="stat-num stat-text" data-i18n="about.s3a">Довольные</span>
+                        <span class="stat-label" data-i18n="about.s3b">клиенты</span>
                     </div>
                 </div>
             </div>
@@ -202,45 +221,45 @@
     <section class="section services" id="services">
         <div class="container">
             <div class="section-head reveal">
-                <p class="eyebrow">услуги</p>
-                <h2 class="section-title">Что я создаю для вас</h2>
-                <p class="section-sub">Две главные зоны моей специализации — брови и губы. В каждой — несколько техник под ваш тип кожи и желаемый результат.</p>
+                <p class="eyebrow" data-i18n="services.eyebrow">услуги</p>
+                <h2 class="section-title" data-i18n="services.title">Что я создаю для вас</h2>
+                <p class="section-sub" data-i18n="services.sub">Две главные зоны моей специализации — брови и губы. В каждой — несколько техник под ваш тип кожи и желаемый результат.</p>
             </div>
             <div class="services-grid">
                 <!-- БРОВИ -->
                 <article class="service-card reveal">
                     <div class="service-img">
-                        <img src="images/service-brows.jpg" width="1100" height="733" alt="Перманентный макияж бровей" loading="lazy">
+                        <picture><source srcset="images/service-brows.webp" type="image/webp"><img src="images/service-brows.jpg" width="1100" height="733" data-i18n-alt="alt.brows" alt="Перманентный макияж бровей Воронеж — пудровая и волосковая техника" loading="lazy"></picture>
                     </div>
                     <div class="service-body">
-                        <h3>Брови</h3>
-                        <p class="service-desc">Густые, графичные или максимально естественные — подберём идеальную форму под черты вашего лица.</p>
+                        <h3 data-i18n="svc.brows">Брови</h3>
+                        <p class="service-desc" data-i18n="svc.brows.desc">Густые, графичные или максимально естественные — подберём идеальную форму под черты вашего лица.</p>
                         <ul class="service-list">
-                            <li><span>Пудровая техника</span><span>мягкая растушёвка, эффект подведённых теней</span></li>
-                            <li><span>Теневая техника</span><span>деликатное заполнение, природный вид</span></li>
-                            <li><span>Волосковая техника</span><span>прорисовка отдельных волосков</span></li>
-                            <li><span>Микроблейдинг</span><span>тончайшие штрихи, максимальная реалистичность</span></li>
+                            <li data-i18n="svc.brows.1">Пудровая техника — мягкая растушёвка, эффект подведённых теней</li>
+                            <li data-i18n="svc.brows.2">Теневая техника — деликатное заполнение, природный вид</li>
+                            <li data-i18n="svc.brows.3">Волосковая техника — прорисовка отдельных волосков</li>
+                            <li data-i18n="svc.brows.4">Микроблейдинг — тончайшие штрихи, максимальная реалистичность</li>
                         </ul>
-                        <div class="service-from">от <strong>3 000 ₽</strong></div>
-                        <a href="#booking" class="btn btn-outline">Записаться</a>
+                        <div class="service-from"><span data-i18n="svc.from">от</span> <strong>3 000 ₽</strong></div>
+                        <a href="#booking" class="btn btn-outline" data-i18n="svc.book">Записаться</a>
                     </div>
                 </article>
                 <!-- ГУБЫ -->
                 <article class="service-card reveal">
                     <div class="service-img">
-                        <img src="images/service-lips.jpg" width="1077" height="798" alt="Перманентный макияж губ" loading="lazy">
+                        <picture><source srcset="images/service-lips.webp" type="image/webp"><img src="images/service-lips.jpg" width="1077" height="798" data-i18n-alt="alt.lips" alt="Перманентный макияж губ Воронеж — акварельная техника и эффект помады" loading="lazy"></picture>
                     </div>
                     <div class="service-body">
-                        <h3>Губы</h3>
-                        <p class="service-desc">Сочный цвет, визуальный объём и исправление асимметрии — без ежемесячного обновления помады.</p>
+                        <h3 data-i18n="svc.lips">Губы</h3>
+                        <p class="service-desc" data-i18n="svc.lips.desc">Сочный цвет, визуальный объём и исправление асимметрии — без ежемесячного обновления помады.</p>
                         <ul class="service-list">
-                            <li><span>Контур губ</span><span>чёткая линия, исправление формы</span></li>
-                            <li><span>Растушёвка</span><span>мягкий переход контура к центру</span></li>
-                            <li><span>Эффект помады</span><span>полное плотное заполнение цветом</span></li>
-                            <li><span>Акварельная техника</span><span>полупрозрачный, нежный оттенок</span></li>
+                            <li data-i18n="svc.lips.1">Контур губ — чёткая линия, исправление формы</li>
+                            <li data-i18n="svc.lips.2">Растушёвка — мягкий переход контура к центру</li>
+                            <li data-i18n="svc.lips.3">Эффект помады — полное плотное заполнение цветом</li>
+                            <li data-i18n="svc.lips.4">Акварельная техника — полупрозрачный, нежный оттенок</li>
                         </ul>
-                        <div class="service-from">от <strong>3 500 ₽</strong></div>
-                        <a href="#booking" class="btn btn-outline">Записаться</a>
+                        <div class="service-from"><span data-i18n="svc.from">от</span> <strong>3 500 ₽</strong></div>
+                        <a href="#booking" class="btn btn-outline" data-i18n="svc.book">Записаться</a>
                     </div>
                 </article>
             </div>
@@ -251,21 +270,21 @@
     <section class="section portfolio" id="portfolio">
         <div class="container">
             <div class="section-head reveal">
-                <p class="eyebrow">портфолио</p>
-                <h2 class="section-title">Галерея работ <span class="title-note">(дорабатывается)</span></h2>
-                <p class="section-sub section-sub-note">Чуть позже здесь появятся фото работ Елены</p>
+                <p class="eyebrow" data-i18n="portfolio.eyebrow">портфолио</p>
+                <h2 class="section-title" data-i18n="portfolio.title">Галерея работ</h2>
+                <p class="section-sub" data-i18n="portfolio.sub">Примеры работ в разных техниках</p>
             </div>
 
             <div class="portfolio-grid">
-                <div class="portfolio-item reveal"><img src="images/g1.jpg" width="1000" height="1000" alt="Перманентный макияж — работа 1" loading="lazy"></div>
-                <div class="portfolio-item reveal"><img src="images/g2.jpg" width="1000" height="1000" alt="Перманент бровей — работа 2" loading="lazy"></div>
-                <div class="portfolio-item reveal"><img src="images/g3.jpg" width="1000" height="1000" alt="Перманентный макияж — работа 3" loading="lazy"></div>
-                <div class="portfolio-item reveal"><img src="images/g4.jpg" width="1000" height="1000" alt="Перманент губ и бровей — работа 4" loading="lazy"></div>
-                <div class="portfolio-item reveal"><img src="images/g5.jpg" width="1000" height="1000" alt="Перманентный макияж — работа 5" loading="lazy"></div>
-                <div class="portfolio-item reveal"><img src="images/g6.jpg" width="1000" height="1000" alt="Перманент бровей — работа 6" loading="lazy"></div>
-                <div class="portfolio-item reveal"><img src="images/g7.jpg" width="1000" height="1000" alt="Перманент бровей — работа 7" loading="lazy"></div>
-                <div class="portfolio-item reveal"><img src="images/g8.jpg" width="1000" height="1000" alt="Перманент губ — работа 8" loading="lazy"></div>
-                <div class="portfolio-item reveal"><img src="images/g9.jpg" width="1000" height="1000" alt="Перманентный макияж — работа 9" loading="lazy"></div>
+                <div class="portfolio-item reveal"><picture><source srcset="images/g1.webp" type="image/webp"><img src="images/g1.jpg" width="1000" height="1000" data-i18n-alt="alt.g1" alt="Пудровые брови — работа мастера Елены в Воронеже" loading="lazy"></picture></div>
+                <div class="portfolio-item reveal"><picture><source srcset="images/g2.webp" type="image/webp"><img src="images/g2.jpg" width="1000" height="1000" data-i18n-alt="alt.g2" alt="Перманентный макияж бровей — натуральный результат" loading="lazy"></picture></div>
+                <div class="portfolio-item reveal"><picture><source srcset="images/g3.webp" type="image/webp"><img src="images/g3.jpg" width="1000" height="1000" data-i18n-alt="alt.g3" alt="Акварельные губы — перманентный макияж в Воронеже" loading="lazy"></picture></div>
+                <div class="portfolio-item reveal"><picture><source srcset="images/g4.webp" type="image/webp"><img src="images/g4.jpg" width="1000" height="1000" data-i18n-alt="alt.g4" alt="Перманент бровей и губ — до и после" loading="lazy"></picture></div>
+                <div class="portfolio-item reveal"><picture><source srcset="images/g5.webp" type="image/webp"><img src="images/g5.jpg" width="1000" height="1000" data-i18n-alt="alt.g5" alt="Микроблейдинг бровей — работа Елены" loading="lazy"></picture></div>
+                <div class="portfolio-item reveal"><picture><source srcset="images/g6.webp" type="image/webp"><img src="images/g6.jpg" width="1000" height="1000" data-i18n-alt="alt.g6" alt="Теневая техника бровей — перманентный макияж" loading="lazy"></picture></div>
+                <div class="portfolio-item reveal"><picture><source srcset="images/g7.webp" type="image/webp"><img src="images/g7.jpg" width="1000" height="1000" data-i18n-alt="alt.g7" alt="Волосковая техника бровей Воронеж" loading="lazy"></picture></div>
+                <div class="portfolio-item reveal"><picture><source srcset="images/g8.webp" type="image/webp"><img src="images/g8.jpg" width="1000" height="1000" data-i18n-alt="alt.g8" alt="Перманентный макияж губ — эффект помады" loading="lazy"></picture></div>
+                <div class="portfolio-item reveal"><picture><source srcset="images/g9.webp" type="image/webp"><img src="images/g9.jpg" width="1000" height="1000" data-i18n-alt="alt.g9" alt="Натуральный перманентный макияж бровей и губ" loading="lazy"></picture></div>
             </div>
         </div>
     </section>
@@ -274,34 +293,34 @@
     <section class="section process" id="process">
         <div class="container">
             <div class="section-head reveal">
-                <p class="eyebrow">как проходит</p>
-                <h2 class="section-title">Путь к идеальному результату</h2>
-                <p class="section-sub">От первой встречи до полного заживления — я сопровождаю вас на каждом этапе.</p>
+                <p class="eyebrow" data-i18n="process.eyebrow">как проходит</p>
+                <h2 class="section-title" data-i18n="process.title">Путь к идеальному результату</h2>
+                <p class="section-sub" data-i18n="process.sub">От первой встречи до полного заживления — я сопровождаю вас на каждом этапе.</p>
             </div>
             <div class="process-timeline">
                 <div class="process-step reveal">
                     <div class="step-num">01</div>
                     <div class="step-icon">💬</div>
-                    <h3>Консультация</h3>
-                    <p>Обсуждаем пожелания, оцениваем кожу, исключаем противопоказания. Подбираем форму и оттенок пигмента.</p>
+                    <h3 data-i18n="process.1t">Консультация</h3>
+                    <p data-i18n="process.1d">Обсуждаем пожелания, оцениваем кожу, исключаем противопоказания. Подбираем форму и оттенок пигмента.</p>
                 </div>
                 <div class="process-step reveal">
                     <div class="step-num">02</div>
                     <div class="step-icon">✏️</div>
-                    <h3>Эскиз</h3>
-                    <p>Вручную прорисовываю будущую форму — вы видите результат ещё до начала работы и вносим правки.</p>
+                    <h3 data-i18n="process.2t">Эскиз</h3>
+                    <p data-i18n="process.2d">Вручную прорисовываю будущую форму — вы видите результат ещё до начала работы и вносим правки.</p>
                 </div>
                 <div class="process-step reveal">
                     <div class="step-num">03</div>
                     <div class="step-icon">💉</div>
-                    <h3>Процедура</h3>
-                    <p>Процедура проходит комфортно и безболезненно, с использованием одноразовых материалов. 1,5–2,5 часа.</p>
+                    <h3 data-i18n="process.3t">Процедура</h3>
+                    <p data-i18n="process.3d">Процедура проходит комфортно и безболезненно, с использованием одноразовых материалов. 1,5–2,5 часа.</p>
                 </div>
                 <div class="process-step reveal">
                     <div class="step-num">04</div>
                     <div class="step-icon">💗</div>
-                    <h3>Уход и коррекция</h3>
-                    <p>Выдаю подробные рекомендации по уходу. Через 1–2 месяца — коррекция, чтобы закрепить результат на годы.</p>
+                    <h3 data-i18n="process.4t">Уход и коррекция</h3>
+                    <p data-i18n="process.4d">Выдаю подробные рекомендации по уходу. Через 1–2 месяца — коррекция, чтобы закрепить результат на годы.</p>
                 </div>
             </div>
         </div>
@@ -311,56 +330,56 @@
     <section class="section pricing" id="pricing">
         <div class="container">
             <div class="section-head reveal">
-                <p class="eyebrow">прайс-лист</p>
-                <h2 class="section-title">Прозрачные цены</h2>
-                <p class="section-sub">Без скрытых доплат. Финальная стоимость зависит от выбранной техники и фиксируется на консультации.</p>
+                <p class="eyebrow" data-i18n="price.eyebrow">прайс-лист</p>
+                <h2 class="section-title" data-i18n="price.title">Прозрачные цены</h2>
+                <p class="section-sub" data-i18n="price.sub">Без скрытых доплат. Финальная стоимость зависит от выбранной техники и фиксируется на консультации.</p>
             </div>
             <div class="pricing-grid">
                 <!-- БРОВИ -->
                 <div class="price-card reveal">
                     <div class="price-head">
-                        <h3>Брови</h3>
-                        <p>от 3 000 ₽</p>
+                        <h3 data-i18n="price.brows">Брови</h3>
+                        <p><span data-i18n="svc.from">от</span> 3 000 ₽</p>
                     </div>
                     <ul class="price-list">
-                        <li><span>Пудровая техника</span><strong>3 000 ₽</strong></li>
-                        <li><span>Теневая техника</span><strong>3 600 ₽</strong></li>
-                        <li><span>Волосковая техника</span><strong>4 200 ₽</strong></li>
-                        <li><span>Микроблейдинг</span><strong>4 800 ₽</strong></li>
-                        <li class="price-note"><span>Коррекция (через 1–2 мес.)</span><strong>−50%</strong></li>
+                        <li><span data-i18n="price.b1">Пудровая техника</span><strong>3 000 ₽</strong></li>
+                        <li><span data-i18n="price.b2">Теневая техника</span><strong>3 600 ₽</strong></li>
+                        <li><span data-i18n="price.b3">Волосковая техника</span><strong>4 200 ₽</strong></li>
+                        <li><span data-i18n="price.b4">Микроблейдинг</span><strong>4 800 ₽</strong></li>
+                        <li class="price-note"><span data-i18n="price.corr">Коррекция (через 1–2 мес.)</span><strong>−50%</strong></li>
                     </ul>
-                    <a href="#booking" class="btn btn-outline btn-block">Выбрать</a>
+                    <a href="#booking" class="btn btn-outline btn-block" data-i18n="price.choose">Выбрать</a>
                 </div>
                 <!-- ГУБЫ -->
                 <div class="price-card price-featured reveal">
-                    <div class="price-badge">Хит</div>
+                    <div class="price-badge" data-i18n="price.hit">Хит</div>
                     <div class="price-head">
-                        <h3>Губы</h3>
-                        <p>от 3 500 ₽</p>
+                        <h3 data-i18n="price.lips">Губы</h3>
+                        <p><span data-i18n="svc.from">от</span> 3 500 ₽</p>
                     </div>
                     <ul class="price-list">
-                        <li><span>Контур губ</span><strong>3 500 ₽</strong></li>
-                        <li><span>Растушёвка</span><strong>4 100 ₽</strong></li>
-                        <li><span>Акварельная техника</span><strong>4 900 ₽</strong></li>
-                        <li><span>Эффект помады</span><strong>5 900 ₽</strong></li>
-                        <li class="price-note"><span>Коррекция (через 1–2 мес.)</span><strong>−50%</strong></li>
+                        <li><span data-i18n="price.l1">Контур губ</span><strong>3 500 ₽</strong></li>
+                        <li><span data-i18n="price.l2">Растушёвка</span><strong>4 100 ₽</strong></li>
+                        <li><span data-i18n="price.l3">Акварельная техника</span><strong>4 900 ₽</strong></li>
+                        <li><span data-i18n="price.l4">Эффект помады</span><strong>5 900 ₽</strong></li>
+                        <li class="price-note"><span data-i18n="price.corr">Коррекция (через 1–2 мес.)</span><strong>−50%</strong></li>
                     </ul>
-                    <a href="#booking" class="btn btn-primary btn-block">Выбрать</a>
+                    <a href="#booking" class="btn btn-primary btn-block" data-i18n="price.choose">Выбрать</a>
                 </div>
                 <!-- ДОПОЛНИТЕЛЬНО -->
                 <div class="price-card reveal">
                     <div class="price-head">
-                        <h3>Дополнительно</h3>
-                        <p>услуги</p>
+                        <h3 data-i18n="price.extra">Дополнительно</h3>
+                        <p data-i18n="nav.services">услуги</p>
                     </div>
                     <ul class="price-list">
-                        <li><span>Консультация</span><strong>бесплатно</strong></li>
-                        <li><span>Анестезия</span><strong>включено</strong></li>
-                        <li><span>Обновление (через год)</span><strong>−20%</strong></li>
+                        <li><span data-i18n="price.e1">Консультация</span><strong data-i18n="price.e1v">бесплатно</strong></li>
+                        <li><span data-i18n="price.e2">Анестезия</span><strong data-i18n="price.e2v">включено</strong></li>
+                        <li><span data-i18n="price.e3">Обновление (через год)</span><strong>−20%</strong></li>
                         <li class="price-note"><span>Исправление чужой работы</span><strong>от 6 000 ₽<br><small>временно не делаю</small></strong></li>
                         <li class="price-note"><span>Подарочный сертификат</span><strong>🎁</strong></li>
                     </ul>
-                    <a href="#booking" class="btn btn-outline btn-block">Уточнить</a>
+                    <a href="#booking" class="btn btn-outline btn-block" data-i18n="price.ask">Уточнить</a>
                 </div>
             </div>
             <p class="pricing-foot reveal">💡 Цена зависит от сложности работы и зоны. Точную стоимость определит бесплатная консультация.</p>
@@ -371,36 +390,36 @@
     <section class="section reviews" id="reviews">
         <div class="container">
             <div class="section-head reveal">
-                <p class="eyebrow">отзывы <span class="eyebrow-note">(дорабатывается)</span></p>
-                <h2 class="section-title">Что говорят клиентки</h2>
-                <p class="section-sub section-sub-note">Чуть позже здесь появятся отзывы о Елене</p>
+                <p class="eyebrow" data-i18n="reviews.eyebrow">отзывы</p>
+                <h2 class="section-title" data-i18n="reviews.title">Что говорят клиентки</h2>
+                <p class="section-sub" data-i18n="reviews.sub">Реальные впечатления о процедурах</p>
             </div>
             <div class="reviews-viewport">
             <div class="reviews-track" id="reviewsTrack">
                 <div class="review-card">
                     <div class="stars">★★★★★</div>
-                    <p>«Боялась боли, но всё прошло спокойно — только лёгкое ощущение. Брови в пудре получились мягкие, без резкой линии. Окружающие просто говорят, что я хорошо выгляжу.»</p>
-                    <div class="review-author"><strong>Марина К.</strong><span>брови, пудровая техника</span></div>
+                    <p data-i18n="review.1.text">«Боялась боли, но всё прошло спокойно — только лёгкое ощущение. Брови в пудре получились мягкие, без резкой линии. Окружающие просто говорят, что я хорошо выгляжу.»</p>
+                    <div class="review-author"><strong>Марина К.</strong><span data-i18n="review.1.role">брови, пудровая техника</span></div>
                 </div>
                 <div class="review-card">
                     <div class="stars">★★★★★</div>
-                    <p>«Делала губы акварельной техникой. Цвет нежный, губы будто чуть увлажнённые — без эффекта яркой помады. Елена аккуратно работает, всё стерильно, атмосфера спокойная.»</p>
-                    <div class="review-author"><strong>Ольга В.</strong><span>губы, акварель</span></div>
+                    <p data-i18n="review.2.text">«Делала губы акварельной техникой. Цвет нежный, губы будто чуть увлажнённые — без эффекта яркой помады. Елена аккуратно работает, всё стерильно, атмосфера спокойная.»</p>
+                    <div class="review-author"><strong>Ольга В.</strong><span data-i18n="review.2.role">губы, акварель</span></div>
                 </div>
                 <div class="review-card">
                     <div class="stars">★★★★★</div>
-                    <p>«Долго откладывала перманент — не хотела «нарисованные» брови. Елена подробно рассказала про этапы и подобрала оттенок под мой цвет волос. Результат естественный, я довольна.»</p>
-                    <div class="review-author"><strong>Екатерина С.</strong><span>брови, теневая техника</span></div>
+                    <p data-i18n="review.3.text">«Долго откладывала перманент — не хотела «нарисованные» брови. Елена подробно рассказала про этапы и подобрала оттенок под мой цвет волос. Результат естественный, я довольна.»</p>
+                    <div class="review-author"><strong>Екатерина С.</strong><span data-i18n="review.3.role">брови, теневая техника</span></div>
                 </div>
                 <div class="review-card">
                     <div class="stars">★★★★★</div>
-                    <p>«Сделала и брови, и губы. Утром уже не нужно ничего подводить — экономия времени каждый день. Форму Елена подбирала под лицо, не навязывала «модный» вариант.»</p>
-                    <div class="review-author"><strong>Анна Л.</strong><span>брови + губы</span></div>
+                    <p data-i18n="review.4.text">«Сделала и брови, и губы. Утром уже не нужно ничего подводить — экономия времени каждый день. Форму Елена подбирала под лицо, не навязывала «модный» вариант.»</p>
+                    <div class="review-author"><strong>Анна Л.</strong><span data-i18n="review.4.role">брови + губы</span></div>
                 </div>
                 <div class="review-card">
                     <div class="stars">★★★★★</div>
-                    <p>«Выбрала микроблейдинг — хотела эффект отдельных волосков. Получилось аккуратно и натурально. После заживления цвет чуть смягчился, как и предупреждала Елена. Планирую прийти на коррекцию.»</p>
-                    <div class="review-author"><strong>Дарья М.</strong><span>микроблейдинг</span></div>
+                    <p data-i18n="review.5.text">«Выбрала микроблейдинг — хотела эффект отдельных волосков. Получилось аккуратно и натурально. После заживления цвет чуть смягчился, как и предупреждала Елена. Планирую прийти на коррекцию.»</p>
+                    <div class="review-author"><strong>Дарья М.</strong><span data-i18n="review.5.role">микроблейдинг</span></div>
                 </div>
             </div>
             </div>
@@ -416,62 +435,62 @@
     <section class="section faq" id="faq">
         <div class="container faq-container">
             <div class="section-head reveal">
-                <p class="eyebrow">частые вопросы</p>
-                <h2 class="section-title">Отвечаю на сомнения</h2>
+                <p class="eyebrow" data-i18n="faq.eyebrow">частые вопросы</p>
+                <h2 class="section-title" data-i18n="faq.title">Отвечаю на сомнения</h2>
             </div>
             <div class="faq-list">
                 <div class="faq-item reveal">
                     <button type="button" class="faq-question">
-                        <span>Больно ли делать перманентный макияж?</span>
+                        <span data-i18n="faq.q1">Больно ли делать перманентный макияж?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Нет, процедура проходит комфортно — вы ощущаете лишь лёгкое прикосновение, не более. Большинство клиенток расслабляются и даже дремлют во время сеанса.</p>
+                        <p data-i18n="faq.a1">Нет, процедура проходит комфортно — вы ощущаете лишь лёгкое прикосновение, не более. Большинство клиенток расслабляются и даже дремлют во время сеанса.</p>
                     </div>
                 </div>
                 <div class="faq-item reveal">
                     <button type="button" class="faq-question">
-                        <span>Сколько держится результат?</span>
+                        <span data-i18n="faq.q2">Сколько держится результат?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>В среднем от 1 до 3 лет, в зависимости от типа кожи, техники и ухода. На жирной коже пигмент сходит быстрее, на сухой — держится дольше. Для закрепления результата рекомендуется одна коррекция через 1–2 месяца.</p>
+                        <p data-i18n="faq.a2">В среднем от 1 до 3 лет, в зависимости от типа кожи, техники и ухода. На жирной коже пигмент сходит быстрее, на сухой — держится дольше. Для закрепления результата рекомендуется одна коррекция через 1–2 месяца.</p>
                     </div>
                 </div>
                 <div class="faq-item reveal">
                     <button type="button" class="faq-question">
-                        <span>Это безопасно? Какие материалы вы используете?</span>
+                        <span data-i18n="faq.q3">Это безопасно? Какие материалы вы используете?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Да, я соблюдаю все нормы безопасности. Работаю только одноразовыми стерильными материалами, вскрываю их при вас. Пигменты — сертифицированные, гипоаллергенные. Всё оборудование проходит обработку согласно СанПиН.</p>
+                        <p data-i18n="faq.a3">Да, я соблюдаю все нормы безопасности. Работаю только одноразовыми стерильными материалами, вскрываю их при вас. Пигменты — сертифицированные, гипоаллергенные. Всё оборудование проходит обработку согласно СанПиН.</p>
                     </div>
                 </div>
                 <div class="faq-item reveal">
                     <button type="button" class="faq-question">
-                        <span>Как ухаживать за перманентом после процедуры?</span>
+                        <span data-i18n="faq.q4">Как ухаживать за перманентом после процедуры?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Я выдаю подробную памятку и специальный уходовый крем. Основное: первые 5–7 дней не мочить водой, не тереть, не посещать баню, бассейн и солярий, не наносить декоративную косметику на зону. Полное заживление — 2–4 недели.</p>
+                        <p data-i18n="faq.a4">Я выдаю подробную памятку и специальный уходовый крем. Основное: первые 5–7 дней не мочить водой, не тереть, не посещать баню, бассейн и солярий, не наносить декоративную косметику на зону. Полное заживление — 2–4 недели.</p>
                     </div>
                 </div>
                 <div class="faq-item reveal">
                     <button type="button" class="faq-question">
-                        <span>Есть ли противопоказания?</span>
+                        <span data-i18n="faq.q5">Есть ли противопоказания?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Да: беременность и лактация, острые воспаления, тяжёлые хронические заболевания в стадии обострения, склонность к келоидным рубцам, приём некоторых медикаментов. На бесплатной консультации мы обязательно всё обсудим.</p>
+                        <p data-i18n="faq.a5">Да: беременность и лактация, острые воспаления, тяжёлые хронические заболевания в стадии обострения, склонность к келоидным рубцам, приём некоторых медикаментов. На бесплатной консультации мы обязательно всё обсудим.</p>
                     </div>
                 </div>
                 <div class="faq-item reveal">
                     <button type="button" class="faq-question">
-                        <span>Можно ли исправить старый неудачный татуаж?</span>
+                        <span data-i18n="faq.q6">Можно ли исправить старый неудачный татуаж?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Пока я временно не берусь за исправление и перекрытие чужих работ — это требует отдельного опыта и осторожной оценки. Как только начну принимать такие случаи, обновлю эту информацию. Если сомневаетесь, стоит ли вам это перекрытие — приходите на бесплатную консультацию, честно оценю ситуацию.</p>
+                        <p data-i18n="faq.a6">Пока я временно не берусь за исправление и перекрытие чужих работ — это требует отдельного опыта и осторожной оценки. Как только начну принимать такие случаи, обновлю эту информацию. Если сомневаетесь, стоит ли вам это перекрытие — приходите на бесплатную консультацию, честно оценю ситуацию.</p>
                     </div>
                 </div>
             </div>
@@ -483,30 +502,30 @@
     <section class="section booking" id="booking">
         <div class="container booking-grid">
             <div class="booking-info reveal">
-                <p class="eyebrow">запись</p>
-                <h2 class="section-title">Запишитесь на консультацию</h2>
-                <p class="booking-lead">Позвоните или напишите в WhatsApp / Telegram — отвечу на вопросы и подберу удобное время. Первая консультация бесплатна.</p>
+                <p class="eyebrow" data-i18n="book.eyebrow">запись</p>
+                <h2 class="section-title" data-i18n="book.title">Запишитесь на консультацию</h2>
+                <p class="booking-lead" data-i18n="book.lead">Позвоните или напишите в WhatsApp / Telegram — отвечу на вопросы и подберу удобное время. Первая консультация бесплатна.</p>
 
                 <div class="contact-cards">
                     <a href="tel:+79515410879" class="contact-card">
                         <span class="contact-icon">📞</span>
-                        <div><small>Телефон</small><strong>+7 (951) 541-08-79</strong></div>
+                        <div><small data-i18n="book.phone">Телефон</small><strong>+7 (951) 541-08-79</strong></div>
                     </a>
                     <a href="https://wa.me/79515410879" target="_blank" rel="noopener noreferrer" class="contact-card">
                         <span class="contact-icon">💬</span>
-                        <div><small>WhatsApp</small><strong>Написать сообщение</strong></div>
+                        <div><small>WhatsApp</small><strong data-i18n="book.wa">Написать сообщение</strong></div>
                     </a>
                     <a href="https://t.me/Annship_Psy_CTR" target="_blank" rel="noopener noreferrer" class="contact-card">
                         <span class="contact-icon">✈️</span>
-                        <div><small>Telegram</small><strong>Написать сообщение</strong></div>
+                        <div><small>Telegram</small><strong data-i18n="book.tg">Написать сообщение</strong></div>
                     </a>
                     <div class="contact-card contact-card--wide">
                         <span class="contact-icon">🏡</span>
-                        <div><small>Где проходит процедура</small><strong>Принимаю дома, в уютной обстановке · г. Воронеж, ул. Ани Максимовой</strong></div>
+                        <div><small data-i18n="book.where">Где проходит процедура</small><strong data-i18n="book.where.v">Принимаю дома, в уютной обстановке · г. Воронеж, ул. Ани Максимовой</strong></div>
                     </div>
                     <div class="contact-card contact-card--wide">
                         <span class="contact-icon">🕐</span>
-                        <div><small>Часы работы</small><strong>Пн–Сб: 10:00–19:00 · Вс: выходной</strong></div>
+                        <div><small data-i18n="book.hours">Часы работы</small><strong data-i18n="book.hours.v">Пн–Сб: 10:00–19:00 · Вс: выходной</strong></div>
                     </div>
                 </div>
             </div>
@@ -522,16 +541,51 @@
                     <div class="booking-map-badge">
                         <span class="booking-map-badge-icon" aria-hidden="true">🏡</span>
                         <div>
-                            <small>Приём на дому</small>
+                            <small data-i18n="book.home">Приём на дому</small>
                             <strong>Воронеж, ул. Ани Максимовой</strong>
                         </div>
                     </div>
                 </div>
                 <div class="booking-map-actions">
-                    <a href="https://yandex.ru/maps/?rtext=~51.581948,39.323545&rtt=auto" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-map">🧭 Навигатор</a>
-                    <a href="https://yandex.ru/maps/?ll=39.323545%2C51.581948&z=15&text=Воронеж%2C%20улица%20Ани%20Максимовой" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-map">🗺️ Карта</a>
+                    <a href="https://yandex.ru/maps/?rtext=~51.581948,39.323545&rtt=auto" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-map">🧭 <span data-i18n="book.nav">Навигатор</span></a>
+                    <a href="https://yandex.ru/maps/?ll=39.323545%2C51.581948&z=15&text=Воронеж%2C%20улица%20Ани%20Максимовой" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-map">🗺️ <span data-i18n="book.map">Карта</span></a>
                     <a href="https://wa.me/79515410879" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-map">💬 WhatsApp</a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============ ЕЩЁ В ВОРОНЕЖЕ ============ -->
+    <section class="section projects" id="projects">
+        <div class="container">
+            <div class="section-head reveal">
+                <p class="eyebrow" data-i18n="proj.eyebrow">ещё в Воронеже</p>
+                <h2 class="section-title" data-i18n="proj.title">Другие наши проекты:</h2>
+                <p class="section-sub" data-i18n="proj.sub">Локальные сервисы из Воронежа — рядом по духу и по городу</p>
+            </div>
+            <div class="projects-grid">
+                <a href="https://yvwvy.ru/" target="_blank" rel="noopener noreferrer" class="project-card reveal">
+                    <span class="project-badge" data-i18n="proj.badge">Наш проект</span>
+                    <span class="project-icon" aria-hidden="true">🚗</span>
+                    <h3 class="project-title" data-i18n="proj.1t">ОСАГО и КАСКО онлайн</h3>
+                    <p class="project-desc" data-i18n="proj.1d">Оформление и продление полиса по России · ~60 минут · официальные страховые</p>
+                    <span class="project-link">yvwvy.ru <span aria-hidden="true">→</span></span>
+                </a>
+                <a href="https://beri36.ru/" target="_blank" rel="noopener noreferrer" class="project-card reveal">
+                    <span class="project-badge" data-i18n="proj.badge">Наш проект</span>
+                    <span class="project-icon" aria-hidden="true">🪖</span>
+                    <h3 class="project-title" data-i18n="proj.2t">Аренда мотошлема</h3>
+                    <p class="project-desc" data-i18n="proj.2d">Прокат JIEKAI JK902 в Воронеже · от 500 ₽/сутки · размеры M и L</p>
+                    <span class="project-link">beri36.ru <span aria-hidden="true">→</span></span>
+                </a>
+                <a href="https://skladvrn.ru/" target="_blank" rel="noopener noreferrer" class="project-card reveal">
+                    <span class="project-badge" data-i18n="proj.badge">Наш проект</span>
+                    <span class="project-icon" aria-hidden="true">📦</span>
+                    <h3 class="project-title" data-i18n="proj.3t">Склад Евгения</h3>
+                    <p class="project-desc" data-i18n="proj.3d">Кабель и пожарное оборудование · опт и розница · склад в Воронеже</p>
+                    <span class="project-link">skladvrn.ru <span aria-hidden="true">→</span></span>
+                </a>
             </div>
         </div>
     </section>
@@ -542,30 +596,30 @@
             <div class="footer-brand">
                 <a href="#hero" class="logo logo-footer">
                     <span class="logo-mark">Е</span>
-                    <span class="logo-text">Елена<small>перманентный макияж</small></span>
+                    <span class="logo-text">Елена<small data-i18n="logo.sub">перманентный макияж</small></span>
                 </a>
-                <p>Мастер перманентного макияжа бровей и губ в Воронеже. Натуральная красота, которая остаётся с вами.</p>
+                <p data-i18n="footer.desc">Мастер перманентного макияжа бровей и губ в Воронеже. Натуральная красота, которая остаётся с вами.</p>
                 <div class="footer-social">
                     <a href="https://wa.me/79515410879" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">💬</a>
                     <a href="https://t.me/Annship_Psy_CTR" target="_blank" rel="noopener noreferrer" aria-label="Telegram">✈️</a>
                 </div>
             </div>
             <div class="footer-col">
-                <h4>Навигация</h4>
-                <a href="#about">Обо мне</a>
-                <a href="#services">Услуги</a>
-                <a href="#portfolio">Портфолио</a>
-                <a href="#pricing">Цены</a>
+                <h4 data-i18n="footer.nav">Навигация</h4>
+                <a href="#about" data-i18n="nav.about">Обо мне</a>
+                <a href="#services" data-i18n="nav.services">Услуги</a>
+                <a href="#portfolio" data-i18n="nav.portfolio">Портфолио</a>
+                <a href="#pricing" data-i18n="nav.pricing">Цены</a>
             </div>
             <div class="footer-col">
-                <h4>Услуги</h4>
-                <a href="#services">Перманент бровей</a>
-                <a href="#services">Перманент губ</a>
-                <a href="#services">Микроблейдинг</a>
-                <a href="#services">Консультация</a>
+                <h4 data-i18n="footer.svc">Услуги</h4>
+                <a href="#services" data-i18n="footer.svc1">Перманент бровей</a>
+                <a href="#services" data-i18n="footer.svc2">Перманент губ</a>
+                <a href="#services" data-i18n="footer.svc3">Микроблейдинг</a>
+                <a href="#services" data-i18n="footer.svc4">Консультация</a>
             </div>
             <div class="footer-col">
-                <h4>Контакты</h4>
+                <h4 data-i18n="footer.contacts">Контакты</h4>
                 <a href="tel:+79515410879">+7 (951) 541-08-79</a>
                 <a href="https://t.me/Annship_Psy_CTR" target="_blank" rel="noopener noreferrer">Telegram</a>
                 <a href="https://wa.me/79515410879" target="_blank" rel="noopener noreferrer">WhatsApp</a>
@@ -575,7 +629,7 @@
         <div class="footer-bottom">
             <div class="container">
                 <p>© <span id="year">2026</span> Елена — Перманентный макияж. Самозанятая (плательщик налога на профессиональный доход). <a href="privacy-policy.html" style="color:inherit;text-decoration:underline;opacity:0.7;">Политика обработки персональных данных</a></p>
-                <p>Сделано с 💗 в Воронеже</p>
+                <p><span data-i18n="footer.made">Сделано с 💗 в Воронеже</span></p>
             </div>
         </div>
     </footer>
@@ -593,6 +647,8 @@
         </div>
     </div>
 
+    <script src="js/i18n-extra.js"></script>
+    <script src="js/i18n.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
