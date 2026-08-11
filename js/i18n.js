@@ -1,5 +1,5 @@
 /* ================================================
-   Многоязычность: RU | EN | ZH | UZ | KA | OS | KY
+   Многоязычность: RU | EN | ZH | UZ | KA | OS | KY | FR
    ================================================ */
 (function () {
     const LANGS = {
@@ -9,7 +9,8 @@
         uz: { code: 'uz', label: 'UZ', name: "O'zbekcha", locale: 'uz_UZ', hreflang: 'uz' },
         ka: { code: 'ka', label: 'KA', name: 'ქართული', locale: 'ka_GE', hreflang: 'ka' },
         os: { code: 'os', label: 'OS', name: 'Ирон', locale: 'os_RU', hreflang: 'os' },
-        ky: { code: 'ky', label: 'KY', name: 'Кыргызча', locale: 'ky_KG', hreflang: 'ky' }
+        ky: { code: 'ky', label: 'KY', name: 'Кыргызча', locale: 'ky_KG', hreflang: 'ky' },
+        fr: { code: 'fr', label: 'FR', name: 'Français', locale: 'fr_FR', hreflang: 'fr' }
     };
 
     const SITE_URL = 'https://elenaperm.ru/';

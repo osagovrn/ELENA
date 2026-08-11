@@ -293,4 +293,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    /* ============================================
+       ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА — статические страницы
+       -----------------------------------------------
+       На статических языковых страницах (index-en.html и т.д.)
+       пункты меню — обычные <a href> на реальные страницы, не
+       кнопки с applyLang(). Этот блок только открывает/закрывает
+       меню; сама вёрстка меню генерируется build-скриптом.
+       Если на странице есть старый JS-переключатель (js/i18n.js),
+       этот код просто ничего не найдёт и тихо выйдет — конфликта нет.
+       ============================================ */
+    (function initStaticLangDropdown() {
+        const switcher = document.getElementById('langSwitcher');
+        if (!switcher || !switcher.classList.contains('lang-dropdown-static')) return;
+        const toggle = switcher.querySelector('.lang-toggle');
+        if (!toggle) return;
+
+        function close() {
+            switcher.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+        }
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const open = switcher.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        document.addEventListener('click', close);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') close();
+        });
+    })();
+
 });
