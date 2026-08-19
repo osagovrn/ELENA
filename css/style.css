@@ -41,6 +41,9 @@
 html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    /* Защита от горизонтального переполнения на мобильных:
+       фото/контент не должны растягивать страницу за пределы экрана */
+    overflow-x: hidden;
 }
 
 body {
@@ -1601,6 +1604,7 @@ a.contact-card:hover {
         padding-right: max(16px, env(safe-area-inset-right, 0px));
     }
     .floating-buttons {
+        position: fixed;
         right: max(8px, env(safe-area-inset-right, 0px));
         bottom: max(8px, calc(8px + env(safe-area-inset-bottom, 0px)));
         gap: 8px;
@@ -1631,12 +1635,18 @@ a.contact-card:hover {
         background-position: 88% 22%;
     }
     .floating-buttons {
+        position: fixed;
         right: max(6px, env(safe-area-inset-right, 0px));
         bottom: max(6px, calc(6px + env(safe-area-inset-bottom, 0px)));
         gap: 6px;
     }
     .float-btn { width: 36px; height: 36px; }
     .float-btn svg { width: 18px; height: 18px; }
+    /* Компактная шапка на узких экранах: логотип, язык и бургер должны влезать */
+    .logo-text { font-size: 1.15rem; }
+    .logo-mark { width: 36px; height: 36px; font-size: 1.2rem; }
+    .navbar { padding: 12px 0; padding-top: max(12px, env(safe-area-inset-top, 0px)); }
+    .nav-container { gap: 8px; }
 }
 
 /* ================================================
