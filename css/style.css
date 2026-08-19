@@ -1589,6 +1589,14 @@ html.js .reveal.visible { opacity: 1; transform: translateY(0); }
     .stat-num.stat-text { font-size: 1.25rem; white-space: normal; }
     .about-image img { height: auto; max-height: none; }
 
+    /* На мобильных отключаем анимацию появления — контент (фото, текст)
+       должен быть виден сразу, без ожидания IntersectionObserver */
+    .reveal,
+    html.js .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
     .floating-buttons {
         right: max(12px, env(safe-area-inset-right, 0px));
         bottom: max(12px, calc(12px + env(safe-area-inset-bottom, 0px)));
