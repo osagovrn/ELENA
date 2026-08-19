@@ -1424,12 +1424,15 @@ a.contact-card:hover {
 /* ================================================
    АНИМАЦИИ ПОЯВЛЕНИЯ
    ================================================ */
-.reveal {
+/* Анимация появления включается ТОЛЬКО при работающем JS (html.js).
+   Без JS (или если скрипт не успел выполниться) контент сразу виден —
+   это защищает от «обрезанного» текста/фото на мобильных. */
+html.js .reveal {
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
 }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+html.js .reveal.visible { opacity: 1; transform: translateY(0); }
 
 /* ================================================
    АДАПТИВ — ОЧЕНЬ ШИРОКИЙ ЭКРАН
