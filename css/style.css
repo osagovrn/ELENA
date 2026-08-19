@@ -1456,7 +1456,8 @@ a.contact-card:hover {
 @media (max-width: 992px) {
     .about-grid { grid-template-columns: 1fr; gap: 48px; }
     .about-image { margin-bottom: 12px; }
-    .about-image img { height: 440px; max-height: 440px; }
+    /* Фото целиком, без обрезки по бокам */
+    .about-image img { height: auto; max-height: none; }
     .about-badge { right: 16px; bottom: -16px; }
     .booking-grid { grid-template-columns: 1fr; gap: 36px; }
     .booking-info .section-title { text-align: center; }
@@ -1582,8 +1583,8 @@ a.contact-card:hover {
     .section-head { margin-bottom: 36px; }
     .about-stats { gap: 20px 24px; }
     .stat-num { font-size: 2.2rem; }
-    .stat-num.stat-text { font-size: 1.25rem; }
-    .about-image img { height: 360px; max-height: 360px; }
+    .stat-num.stat-text { font-size: 1.25rem; white-space: normal; }
+    .about-image img { height: auto; max-height: none; }
 
     .floating-buttons {
         right: max(12px, env(safe-area-inset-right, 0px));
