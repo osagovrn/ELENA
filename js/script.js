@@ -327,22 +327,27 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ============================================
        ФОНОВАЯ МУЗЫКА — кнопка-колонка
        -----------------------------------------------
-       • играет тихо (volume 0.2 — 20%), зациклена (loop в <audio>)
+       • играет тихо (volume 0.05 — 5%), зациклена (loop в <audio>)
+       • по умолчанию музыка ВКЛЮЧЕНА (в т.ч. при первом визите)
        • клик по кнопке — вкл/выкл: при выключении иконка перечёркивается
        • состояние запоминается в localStorage
-       • автовоспроизведение браузером заблокировано,
-         поэтому музыка стартует только после клика
+       • <audio preload="auto"> — файл загружается заранее
+       • автовоспроизведение со звуком браузеры могут блокировать:
+         сразу пытаемся запустить, а если заблокировано — стартуем
+         после первого взаимодействия (клик/тап/скролл)
        ============================================ */
     (function initBackgroundMusic() {
         const btn = document.getElementById('musicToggle');
         const audio = document.getElementById('bgMusic');
         if (!btn || !audio) return;
 
-        audio.volume = 0.2;
+        audio.volume = 0.05;
         audio.loop = true;
 
         const KEY = 'elenaperm_music_on';
-        let playing = localStorage.getItem(KEY) === '1';
+        // По умолчанию музыка включена (первый визит или нет сохранённого выбора)
+        let stored = localStorage.getItem(KEY);
+        let playing = stored === null || stored === '1';
 
         function setState(on) {
             playing = on;
@@ -359,21 +364,27 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 audio.play()
                     .then(() => setState(true))
-                    .catch(() => setState(false)); // автовоспроизведение запрещено — просто не включаем
+                    .catch(() => setState(false));
             }
         });
 
-        // Если пользователь ранее включил музыку — пробуем продолжить (после первого клика по странице)
+        // Стартуем музыку при загрузке (если включена)
         if (playing) {
-            const resume = () => {
-                audio.play().then(() => setState(true)).catch(() => setState(false));
-                document.removeEventListener('click', resume);
-                document.removeEventListener('scroll', resume);
-                document.removeEventListener('touchstart', resume);
+            const start = () => {
+                audio.play().then(() => setState(true)).catch(() => {});
+                cleanup();
             };
-            document.addEventListener('click', resume);
-            document.addEventListener('scroll', resume, { passive: true });
-            document.addEventListener('touchstart', resume, { passive: true });
+            const cleanup = () => {
+                document.removeEventListener('click', start);
+                document.removeEventListener('scroll', start);
+                document.removeEventListener('touchstart', start);
+            };
+            // Сразу пробуем (десктоп и браузеры, разрешающие autoplay)
+            start();
+            // Если заблокировано — после первого взаимодействия (мобильные)
+            document.addEventListener('click', start);
+            document.addEventListener('scroll', start, { passive: true });
+            document.addEventListener('touchstart', start, { passive: true });
         }
     })();
 
