@@ -209,6 +209,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .float-telegram { background: #229ED9; animation-delay: 0.6s; }
 .float-phone { background: var(--accent); animation-delay: 1.2s; }
 .float-music {
+    position: relative;
     background: rgba(30, 22, 20, 0.9);
     border: 1px solid rgba(192, 133, 111, 0.55);
     color: var(--accent);
@@ -220,6 +221,19 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     background: var(--accent);
     color: var(--white);
     border-color: var(--accent);
+}
+.float-music.is-muted svg {
+    opacity: 0.85;
+}
+.float-music.is-muted::after {
+    content: '';
+    position: absolute;
+    width: 62%;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transform: rotate(-45deg);
+    pointer-events: none;
 }
 .float-btn:hover { transform: scale(1.12) translateY(-2px); }
 body.menu-open .floating-buttons { display: none; }
