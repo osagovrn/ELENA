@@ -357,11 +357,58 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem(KEY, on ? '1' : '0');
         }
 
+        // Один раз пробуем включить звук при первом взаимодействии с сайтом
+        let unmuted = false;
+        const tryUnmute = () => {
+            if (unmuted) return;
+            unmuted = true;
+            audio.muted = false;
+            audio.play().then(() => setState(true)).catch(() => {});
+            cleanup();
+        };
+
+        const start = () => {
+            // 1) Сразу пробуем play() со звуком (если браузер позволяет autoplay)
+            const p = audio.play();
+            if (p && typeof p.then === 'function') {
+                p.then(() => {
+                    setState(true);
+                    cleanup();
+                }).catch(() => {
+                    // 2) Chrome блокирует звук до взаимодействия —
+                    //    запускаем muted (autoplay muted разрешён),
+                    //    звук появится при первом касании/клике
+                    audio.muted = true;
+                    audio.play()
+                        .then(() => {
+                            setState(true);
+                            btn.classList.add('is-playing');
+                            document.addEventListener('click', tryUnmute);
+                            document.addEventListener('keydown', tryUnmute);
+                            document.addEventListener('touchstart', tryUnmute, { passive: true });
+                            document.addEventListener('scroll', tryUnmute, { passive: true });
+                        })
+                        .catch(() => {});
+                });
+            } else {
+                audio.muted = false;
+                setState(true);
+                cleanup();
+            }
+        };
+        const cleanup = () => {
+            document.removeEventListener('click', start);
+            document.removeEventListener('scroll', start);
+            document.removeEventListener('touchstart', start);
+            document.removeEventListener('keydown', start);
+        };
+
         btn.addEventListener('click', () => {
             if (playing) {
                 audio.pause();
                 setState(false);
             } else {
+                audio.muted = false;
                 audio.play()
                     .then(() => setState(true))
                     .catch(() => setState(false));
@@ -370,21 +417,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Стартуем музыку при загрузке (если включена)
         if (playing) {
-            const start = () => {
-                audio.play().then(() => setState(true)).catch(() => {});
-                cleanup();
-            };
-            const cleanup = () => {
-                document.removeEventListener('click', start);
-                document.removeEventListener('scroll', start);
-                document.removeEventListener('touchstart', start);
-            };
-            // Сразу пробуем (десктоп и браузеры, разрешающие autoplay)
             start();
-            // Если заблокировано — после первого взаимодействия (мобильные)
+            // На случай если вызов был слишком рано — дублируем по первому взаимодействию
             document.addEventListener('click', start);
-            document.addEventListener('scroll', start, { passive: true });
             document.addEventListener('touchstart', start, { passive: true });
+            document.addEventListener('scroll', start, { passive: true });
+            document.addEventListener('keydown', start);
         }
     })();
 
