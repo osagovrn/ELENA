@@ -327,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ============================================
        ФОНОВАЯ МУЗЫКА — кнопка-колонка
        -----------------------------------------------
-       • играет на половине громкости (volume 0.5), зациклена (loop в <audio>)
+       • играет тихо (volume 0.2 — 20%), зациклена (loop в <audio>)
        • клик по кнопке — вкл/выкл: при выключении иконка перечёркивается
        • состояние запоминается в localStorage
        • автовоспроизведение браузером заблокировано,
@@ -338,7 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const audio = document.getElementById('bgMusic');
         if (!btn || !audio) return;
 
-        audio.volume = 0.5;
+        audio.volume = 0.2;
         audio.loop = true;
 
         const KEY = 'elenaperm_music_on';
