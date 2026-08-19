@@ -208,6 +208,19 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .float-whatsapp { background: #25D366; }
 .float-telegram { background: #229ED9; animation-delay: 0.6s; }
 .float-phone { background: var(--accent); animation-delay: 1.2s; }
+.float-music {
+    background: rgba(30, 22, 20, 0.9);
+    border: 1px solid rgba(192, 133, 111, 0.55);
+    color: var(--accent);
+    animation-delay: 1.8s;
+    cursor: pointer;
+}
+.float-music:hover { color: var(--white); border-color: var(--accent); }
+.float-music.is-playing {
+    background: var(--accent);
+    color: var(--white);
+    border-color: var(--accent);
+}
 .float-btn:hover { transform: scale(1.12) translateY(-2px); }
 body.menu-open .floating-buttons { display: none; }
 body.menu-open { overflow: hidden; }

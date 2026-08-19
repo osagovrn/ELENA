@@ -324,4 +324,56 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     })();
 
+    /* ============================================
+       ФОНОВАЯ МУЗЫКА — кнопка-колонка
+       -----------------------------------------------
+       • играет тихо (volume 0.15), зациклена (loop в <audio>)
+       • клик по кнопке — вкл/выкл
+       • состояние запоминается в localStorage
+       • автовоспроизведение браузером заблокировано,
+         поэтому музыка стартует только после клика
+       ============================================ */
+    (function initBackgroundMusic() {
+        const btn = document.getElementById('musicToggle');
+        const audio = document.getElementById('bgMusic');
+        if (!btn || !audio) return;
+
+        audio.volume = 0.15;
+        audio.loop = true;
+
+        const KEY = 'elenaperm_music_on';
+        let playing = localStorage.getItem(KEY) === '1';
+
+        function setState(on) {
+            playing = on;
+            btn.classList.toggle('is-playing', on);
+            btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+            localStorage.setItem(KEY, on ? '1' : '0');
+        }
+
+        btn.addEventListener('click', () => {
+            if (playing) {
+                audio.pause();
+                setState(false);
+            } else {
+                audio.play()
+                    .then(() => setState(true))
+                    .catch(() => setState(false)); // автовоспроизведение запрещено — просто не включаем
+            }
+        });
+
+        // Если пользователь ранее включил музыку — пробуем продолжить (после первого клика по странице)
+        if (playing) {
+            const resume = () => {
+                audio.play().then(() => setState(true)).catch(() => setState(false));
+                document.removeEventListener('click', resume);
+                document.removeEventListener('scroll', resume);
+                document.removeEventListener('touchstart', resume);
+            };
+            document.addEventListener('click', resume);
+            document.addEventListener('scroll', resume, { passive: true });
+            document.addEventListener('touchstart', resume, { passive: true });
+        }
+    })();
+
 });
