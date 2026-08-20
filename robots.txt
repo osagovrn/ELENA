@@ -1,0 +1,5 @@
+# Домен: elenaperm.ru
+User-agent: *
+Allow: /
+
+Sitemap: https://elenaperm.ru/sitemap.xml
