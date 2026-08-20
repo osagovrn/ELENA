@@ -331,10 +331,9 @@ document.addEventListener('DOMContentLoaded', () => {
        • по умолчанию музыка ВКЛЮЧЕНА (в т.ч. при первом визите)
        • клик по кнопке — вкл/выкл: при выключении иконка перечёркивается
        • состояние запоминается в localStorage
-       • <audio preload="auto"> — файл загружается заранее
-       • автовоспроизведение со звуком браузеры могут блокировать:
-         сразу пытаемся запустить, а если заблокировано — стартуем
-         после первого взаимодействия (клик/тап/скролл)
+       • переключатель смотрит на реальный audio.paused / muted:
+         пока браузер блокирует autoplay, первое нажатие ВКЛЮЧАЕТ звук,
+         а не выключает «виртуально включённую» музыку
        ============================================ */
     (function initBackgroundMusic() {
         const btn = document.getElementById('musicToggle');
@@ -345,84 +344,71 @@ document.addEventListener('DOMContentLoaded', () => {
         audio.loop = true;
 
         const KEY = 'elenaperm_music_on';
-        // По умолчанию музыка включена (первый визит или нет сохранённого выбора)
-        let stored = localStorage.getItem(KEY);
-        let playing = stored === null || stored === '1';
+        const wantOn = localStorage.getItem(KEY) !== '0';
 
-        function setState(on) {
-            playing = on;
+        function syncUi(on) {
             btn.classList.toggle('is-playing', on);
             btn.classList.toggle('is-muted', !on);
             btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-            localStorage.setItem(KEY, on ? '1' : '0');
         }
 
-        // Один раз пробуем включить звук при первом взаимодействии с сайтом
-        let unmuted = false;
-        const tryUnmute = () => {
-            if (unmuted) return;
-            unmuted = true;
+        function actuallyOn() {
+            return !audio.paused && !audio.muted;
+        }
+
+        function stopMusic() {
+            audio.pause();
             audio.muted = false;
-            audio.play().then(() => setState(true)).catch(() => {});
-            cleanup();
-        };
+            localStorage.setItem(KEY, '0');
+            syncUi(false);
+        }
 
-        const start = () => {
-            // 1) Сразу пробуем play() со звуком (если браузер позволяет autoplay)
-            const p = audio.play();
-            if (p && typeof p.then === 'function') {
-                p.then(() => {
-                    setState(true);
-                    cleanup();
-                }).catch(() => {
-                    // 2) Chrome блокирует звук до взаимодействия —
-                    //    запускаем muted (autoplay muted разрешён),
-                    //    звук появится при первом касании/клике
-                    audio.muted = true;
-                    audio.play()
-                        .then(() => {
-                            setState(true);
-                            btn.classList.add('is-playing');
-                            document.addEventListener('click', tryUnmute);
-                            document.addEventListener('keydown', tryUnmute);
-                            document.addEventListener('touchstart', tryUnmute, { passive: true });
-                            document.addEventListener('scroll', tryUnmute, { passive: true });
-                        })
-                        .catch(() => {});
-                });
-            } else {
-                audio.muted = false;
-                setState(true);
-                cleanup();
+        function startMusic() {
+            audio.muted = false;
+            return audio.play().then(() => {
+                localStorage.setItem(KEY, '1');
+                syncUi(true);
+                removeUnlockListeners();
+            });
+        }
+
+        function fromMusicButton(e) {
+            return e.target && btn.contains(e.target);
+        }
+
+        function unlockFromPage(e) {
+            if (fromMusicButton(e)) return;
+            if (localStorage.getItem(KEY) === '0') return;
+            if (actuallyOn()) {
+                removeUnlockListeners();
+                return;
             }
-        };
-        const cleanup = () => {
-            document.removeEventListener('click', start);
-            document.removeEventListener('scroll', start);
-            document.removeEventListener('touchstart', start);
-            document.removeEventListener('keydown', start);
-        };
+            startMusic().catch(() => {});
+        }
 
-        btn.addEventListener('click', () => {
-            if (playing) {
-                audio.pause();
-                setState(false);
+        function removeUnlockListeners() {
+            document.removeEventListener('click', unlockFromPage, true);
+            document.removeEventListener('keydown', unlockFromPage);
+        }
+
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (actuallyOn()) {
+                stopMusic();
             } else {
-                audio.muted = false;
-                audio.play()
-                    .then(() => setState(true))
-                    .catch(() => setState(false));
+                startMusic().catch(() => syncUi(false));
             }
         });
 
-        // Стартуем музыку при загрузке (если включена)
-        if (playing) {
-            start();
-            // На случай если вызов был слишком рано — дублируем по первому взаимодействию
-            document.addEventListener('click', start);
-            document.addEventListener('touchstart', start, { passive: true });
-            document.addEventListener('scroll', start, { passive: true });
-            document.addEventListener('keydown', start);
+        if (wantOn) {
+            startMusic().catch(() => {
+                syncUi(false);
+                document.addEventListener('click', unlockFromPage, true);
+                document.addEventListener('keydown', unlockFromPage);
+            });
+        } else {
+            syncUi(false);
         }
     })();
 

@@ -614,15 +614,26 @@ body.menu-open { overflow: hidden; }
     gap: clamp(40px, 6vw, 80px);
     align-items: center;
 }
+.about-image,
+.about-text {
+    min-width: 0;
+    max-width: 100%;
+}
 .about-image {
     position: relative;
     margin-bottom: 20px;
 }
+.about-image picture {
+    display: block;
+    width: 100%;
+}
 .about-image img {
     width: 100%;
+    max-width: 100%;
     height: min(580px, 70vw);
     max-height: 580px;
     object-fit: cover;
+    object-position: 70% center;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
 }
@@ -1457,10 +1468,15 @@ html.js .reveal.visible { opacity: 1; transform: translateY(0); }
    АДАПТИВ — ПЛАНШЕТ (+ бургер-меню)
    ================================================ */
 @media (max-width: 992px) {
-    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .about-grid { grid-template-columns: 1fr; gap: 48px; align-items: start; }
     .about-image { margin-bottom: 12px; }
-    /* Фото целиком, без обрезки по бокам */
-    .about-image img { height: auto; max-height: none; }
+    /* Портретное фото целиком, без обрезки object-fit: cover */
+    .about-image img {
+        height: auto;
+        max-height: none;
+        object-fit: contain;
+        object-position: center top;
+    }
     .about-badge { right: 16px; bottom: -16px; }
     .booking-grid { grid-template-columns: 1fr; gap: 36px; }
     .booking-info .section-title { text-align: center; }
@@ -1587,7 +1603,37 @@ html.js .reveal.visible { opacity: 1; transform: translateY(0); }
     .about-stats { gap: 20px 24px; }
     .stat-num { font-size: 2.2rem; }
     .stat-num.stat-text { font-size: 1.25rem; white-space: normal; }
-    .about-image img { height: auto; max-height: none; }
+    .about-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        width: 100%;
+        max-width: 100%;
+    }
+    .about-image,
+    .about-image picture,
+    .about-text {
+        min-width: 0;
+        max-width: 100%;
+        width: 100%;
+        overflow: visible;
+    }
+    .about-image img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        max-height: none;
+        object-fit: contain;
+        object-position: center top;
+    }
+    .about-text .section-title {
+        font-size: clamp(1.7rem, 8vw, 2.4rem);
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+    .about-text p {
+        overflow-wrap: break-word;
+    }
 
     /* На мобильных отключаем анимацию появления — контент (фото, текст)
        должен быть виден сразу, без ожидания IntersectionObserver */
