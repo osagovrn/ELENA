@@ -642,20 +642,26 @@ body.menu-open { overflow: hidden; }
     bottom: -20px;
     right: 16px;
     background: var(--white);
-    padding: 20px 28px;
+    padding: 16px 20px;
     border-radius: var(--radius);
     box-shadow: var(--shadow-md);
     text-align: center;
     display: flex;
     flex-direction: column;
-    line-height: 1;
+    align-items: center;
+    line-height: 1.15;
     max-width: calc(100% - 32px);
+    box-sizing: border-box;
+    overflow: visible;
 }
 .badge-num {
     font-family: var(--serif);
-    font-size: 3rem;
+    font-size: clamp(1.2rem, 2.4vw, 1.85rem);
     font-weight: 600;
     color: var(--accent-a11y);
+    overflow-wrap: break-word;
+    word-break: normal;
+    max-width: 100%;
 }
 .badge-text {
     font-size: 0.78rem;
@@ -1477,7 +1483,17 @@ html.js .reveal.visible { opacity: 1; transform: translateY(0); }
         object-fit: contain;
         object-position: center top;
     }
-    .about-badge { right: 16px; bottom: -16px; }
+    .about-badge {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        left: auto;
+        margin-top: 16px;
+        max-width: 100%;
+        width: 100%;
+        padding: 16px 18px;
+    }
+    .badge-num { font-size: clamp(1.15rem, 5.2vw, 1.5rem); }
     .booking-grid { grid-template-columns: 1fr; gap: 36px; }
     .booking-info .section-title { text-align: center; }
     .booking-info .eyebrow { text-align: center; }
@@ -1671,12 +1687,15 @@ html.js .reveal.visible { opacity: 1; transform: translateY(0); }
     .float-btn svg { width: 20px; height: 20px; }
     .about-badge {
         position: relative;
-        bottom: 0;
-        right: 0;
-        display: inline-flex;
-        margin-top: 16px;
+        bottom: auto;
+        right: auto;
+        width: 100%;
         max-width: 100%;
+        margin-top: 14px;
+        padding: 14px 14px;
     }
+    .badge-num { font-size: clamp(1.05rem, 5vw, 1.35rem); }
+    .badge-text { letter-spacing: 0.6px; }
     .about-image { margin-bottom: 0; }
     .portfolio-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
     .section { padding: 48px 0; }
